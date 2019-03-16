@@ -1,11 +1,15 @@
-from random import randint
+from .helpers import generate_random_numbers
 
 def executar(len_list=10, start=0, end=10):
     print(f'Tamanho da lista: {len_list}')
     print(f'Start: {start}')
     print(f'End: {end}')
 
-    _list = [ randint(start, end) for i in range(len_list) ]
+    _list = generate_random_numbers(
+        len_list=len_list,
+        start=start,
+        end=end
+    )
 
     choice = input("Deseja visualizar a lista? (S/N)").upper()
 
