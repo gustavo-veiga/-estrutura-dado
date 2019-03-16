@@ -17,7 +17,7 @@ def binarySearch(numbers: list, item: int) -> int:
     index int
         The index of element. Return -1 if element not exists in list
     """
-    pass
+    return -1
 
 
 def linearSearch(numbers: list, item: int) -> int:
@@ -39,4 +39,9 @@ def linearSearch(numbers: list, item: int) -> int:
     index int
         The index of element. Return -1 if element not exists in list
     """
-    pass
+    
+    for (index, number) in enumerate(numbers):
+        if number == item:
+            return index
+    
+    return -1

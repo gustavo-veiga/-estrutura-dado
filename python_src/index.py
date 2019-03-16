@@ -22,10 +22,12 @@ def main():
             print(numbers)
         elif eq(choice, 2):
             item = get_item()
-            linearSearch(numbers=numbers, item=item)
+            index = linearSearch(numbers=numbers, item=item)
+            print(f'O elemento {item} está na posição {index} do array')
         elif eq(choice, 3):
             item = get_item()
-            binarySearch(numbers=numbers, item=item)
+            index = binarySearch(numbers=numbers, item=item)
+            print(f'O elemento {item} está na posição {index} do array')
         elif eq(choice, 4):
             bubbleSortOrd(numbers=numbers)
         elif eq(choice, 5):
