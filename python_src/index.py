@@ -1,4 +1,4 @@
-from .helpers import generate_random_numbers
+from .helpers import generate_random_numbers, get_choice
 
 def executar(len_list=10, start=0, end=10):
     print(f'Tamanho da lista: {len_list}')
@@ -11,12 +11,11 @@ def executar(len_list=10, start=0, end=10):
         end=end
     )
 
-    choice = input("Deseja visualizar a lista? (S/N)").upper()
+    choice = get_choice('Deseja visualizar a lista?')
 
-    if choice == 'S':
+    if choice:
         print(_list)
-
-    if choice == 'N':
+    else:
         print('Tudo bem, não está aqui quem perguntou...')
 
 
@@ -28,11 +27,8 @@ def main():
 
         executar(end=end, len_list=len_list, start=start)
 
-        choice = input("Deseja continuar? (S/N)").upper()
+        choice = get_choice('Deseja continuar?')
 
-        if choice == 'S':
-            continue
-
-        if choice == 'N':
+        if not choice:
             print('Até logo, até mais ver, bon voyage, arrivederci, até mais, adeus, boa viagem, vá em paz, que a porta bata onde o sol não bate, não volte mais aqui, hasta la vista baby, escafeda-se, e saia logo daqui')
             break
