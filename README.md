@@ -20,3 +20,11 @@ Após isso, basta executar o script main.py
 ```sh
 python main.py
 ```
+
+### Tests
+
+Para rodar os testes do código Python, basta:
+
+```sh
+python manage.py tests
+```
