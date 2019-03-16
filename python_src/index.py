@@ -1,4 +1,4 @@
-from .helpers import *
+from .helpers import generate_random_numbers, get_choice, get_initial_parameters
 
 def executar(len_list=10, start=0, end=10):
     _list = generate_random_numbers(
