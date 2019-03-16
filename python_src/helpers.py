@@ -44,3 +44,29 @@ def get_choice(message: str) -> bool:
     """
 
     return input(f'{message} (S/N)').upper() == 'S'
+
+
+def get_initial_parameters():
+    """
+    Get initial parameters from user
+
+    Returns
+    -------
+
+    dict
+        {
+            'len': len of the list,
+            'start': start number,
+            'end': end number
+        }
+    """
+
+    len_list = int(input('Digite um valor para o tamanho da lista: '))
+    start = int(input('Digite um valor de inicio: '))
+    end = int(input('Digite um valor de fim: '))
+
+    return {
+        'len': len_list,
+        'start': start,
+        'end': end
+    }

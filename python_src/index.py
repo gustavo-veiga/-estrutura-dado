@@ -1,10 +1,6 @@
-from .helpers import generate_random_numbers, get_choice
+from .helpers import *
 
 def executar(len_list=10, start=0, end=10):
-    print(f'Tamanho da lista: {len_list}')
-    print(f'Start: {start}')
-    print(f'End: {end}')
-
     _list = generate_random_numbers(
         len_list=len_list,
         start=start,
@@ -21,11 +17,13 @@ def executar(len_list=10, start=0, end=10):
 
 def main():
     while True:
-        len_list = int(input("Digite um valor para o tamanho da lista: "))
-        start = int(input("Digite um valor de inicio: "))
-        end = int(input("Digite um valor de fim: "))
+        initial_parameters = get_initial_parameters()
 
-        executar(end=end, len_list=len_list, start=start)
+        executar(
+            end=initial_parameters.get('end'),
+            len_list=initial_parameters.get('len'),
+            start=initial_parameters.get('start')
+        )
 
         choice = get_choice('Deseja continuar?')
 
