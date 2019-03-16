@@ -13,7 +13,18 @@ def bubbleSortOrd(numbers: list) -> list:
 
     list
     """
-    pass
+    _numbers = [ number for number in numbers ]
+    _sorted = False
+
+    while not _sorted:
+        _sorted = True
+
+        for i in range(len(_numbers) - 1):
+            if _numbers[i] > _numbers[i+1]:
+                _numbers[i], _numbers[i+1] = _numbers[i+1],_numbers[i]
+                _sorted = False        
+
+    return _numbers
 
 
 def shellSortOrd(numbers: list) -> list:
@@ -31,4 +42,5 @@ def shellSortOrd(numbers: list) -> list:
 
     list
     """
-    pass
+    print('Não implementado ainda')
+    return []

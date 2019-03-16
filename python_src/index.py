@@ -29,12 +29,13 @@ def main():
             index = binarySearch(numbers=numbers, item=item)
             print(f'O elemento {item} está na posição {index} do array')
         elif eq(choice, 4):
-            bubbleSortOrd(numbers=numbers)
+            _sorted = bubbleSortOrd(numbers=numbers)
+            print(f'A lista ordenada fica: {_sorted}')
         elif eq(choice, 5):
             shellSortOrd(numbers=numbers)
         elif eq(choice, 6):
             element = get_item()
             _list = delElement(numbers=numbers, element=element)
-            print(f'List after delete: {_list}')
+            print(f'Lista após deleção: {_list}')
         elif eq(choice, 7):
             closeProgram()
