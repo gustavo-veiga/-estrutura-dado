@@ -1,32 +1,37 @@
-from .helpers import generate_random_numbers, get_choice, get_initial_parameters
+from operator import eq
 
-def executar(len_list=10, start=0, end=10):
-    _list = generate_random_numbers(
-        len_list=len_list,
-        start=start,
-        end=end
-    )
-
-    choice = get_choice('Deseja visualizar a lista?')
-
-    if choice:
-        print(_list)
-    else:
-        print('Tudo bem, não está aqui quem perguntou...')
+from .menu import show_menu
+from .helpers import closeProgram, delElement, generate_random_numbers, get_choice, get_initial_parameters, get_item
+from .search_algorithms import binarySearch, linearSearch
+from .ordering_algorithms import bubbleSortOrd, shellSortOrd
 
 
 def main():
+    initial_parameters = get_initial_parameters()
+
+    numbers = generate_random_numbers(
+        len_list=initial_parameters.get('len'),
+        start=initial_parameters.get('start'),
+        end=initial_parameters.get('end')
+    )
+
     while True:
-        initial_parameters = get_initial_parameters()
+        choice = show_menu(numbers=numbers)
 
-        executar(
-            end=initial_parameters.get('end'),
-            len_list=initial_parameters.get('len'),
-            start=initial_parameters.get('start')
-        )
-
-        choice = get_choice('Deseja continuar?')
-
-        if not choice:
-            print('Até logo, até mais ver, bon voyage, arrivederci, até mais, adeus, boa viagem, vá em paz, que a porta bata onde o sol não bate, não volte mais aqui, hasta la vista baby, escafeda-se, e saia logo daqui')
-            break
+        if eq(choice, 1):
+            print(numbers)
+        elif eq(choice, 2):
+            item = get_item()
+            linearSearch(numbers=numbers, item=item)
+        elif eq(choice, 3):
+            item = get_item()
+            binarySearch(numbers=numbers, item=item)
+        elif eq(choice, 4):
+            bubbleSortOrd(numbers=numbers)
+        elif eq(choice, 5):
+            shellSortOrd(numbers=numbers)
+        elif eq(choice, 6):
+            element = get_item()
+            delElement(numbers=numbers, element=element)
+        elif eq(choice, 7):
+            closeProgram()

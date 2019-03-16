@@ -1,6 +1,37 @@
 from random import randint
 
 
+def closeProgram():
+    print('Até logo, até mais ver, bon voyage, arrivederci, até mais, adeus, boa viagem, vá em paz, que a porta bata onde o sol não bate, não volte mais aqui, hasta la vista baby, escafeda-se, e saia logo daqui')
+    exit()
+
+
+def delElement(numbers: list, element: int) -> int:
+    """
+    Delete element from the list
+
+    Parameters
+    ----------
+
+    numbers : list
+        The numbers list
+
+    element : int
+        The element to delete
+
+    Returns
+    -------
+
+    list
+        The final list with random numbers, without element
+    """
+    return [ number for number in numbers if number != element ]
+
+
+def get_item():
+    return int(input('Escolha um item da lista: '))
+
+
 def generate_random_numbers(len_list: list, start: int, end: int) -> list:
     """
     Generate random numbers, by using list length, start and end
