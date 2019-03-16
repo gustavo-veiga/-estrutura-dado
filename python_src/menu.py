@@ -17,11 +17,11 @@ def get_menu_item():
     print("""
     Escolha uma das opcoes meu jovem Padawan
 
-    1 --> Deseja visualizar o a lista ?
-    2 --> Realizar busca linear por um elemento.
-    3 --> Realizar busca Binaria.
-    4 --> Ordenar com bubble sorte.
-    5 --> Ordenar Com  Shell sorte.
+    1 --> Deseja visualizar o a lista?
+    2 --> Realizar Busca Linear por um elemento.
+    3 --> Realizar Busca Binaria por um elemento.
+    4 --> Ordenar com Bubble Sort.
+    5 --> Ordenar com  Shell Sort.
     6 --> Excluir um elemento.
     7 --> Encerrar :(
     """)
