@@ -32,6 +32,7 @@ def main():
             shellSortOrd(numbers=numbers)
         elif eq(choice, 6):
             element = get_item()
-            delElement(numbers=numbers, element=element)
+            _list = delElement(numbers=numbers, element=element)
+            print(f'List after delete: {_list}')
         elif eq(choice, 7):
             closeProgram()
