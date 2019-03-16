@@ -1,4 +1,4 @@
-from .ordering_algorithms import bubbleSortOrd
+from .ordering_algorithms import bubble_sort
 
 
 def binary_search_func(numbers, _min, _max, element):
@@ -31,7 +31,7 @@ def binary_search_func(numbers, _min, _max, element):
     )
 
 
-def binarySearch(numbers: list, item: int) -> int:
+def binary_search(numbers: list, item: int) -> int:
     """
     Algorithm that implement binary search
 
@@ -50,7 +50,7 @@ def binarySearch(numbers: list, item: int) -> int:
     index int
         The index of element. Return -1 if element not exists in list
     """
-    _sorted_elements = bubbleSortOrd(numbers=numbers)
+    _sorted_elements = bubble_sort(numbers=numbers)
     return binary_search_func(
         numbers=_sorted_elements,
         _min=0,
@@ -59,7 +59,7 @@ def binarySearch(numbers: list, item: int) -> int:
     )
 
 
-def linearSearch(numbers: list, item: int) -> int:
+def linear_search(numbers: list, item: int) -> int:
     """
     Algorithm that implement linear search
 

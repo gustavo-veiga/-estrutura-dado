@@ -2,8 +2,8 @@ from operator import eq
 
 from .menu import show_menu
 from .helpers import closeProgram, delElement, generate_random_numbers, get_choice, get_initial_parameters, get_item
-from .search_algorithms import binarySearch, linearSearch
-from .ordering_algorithms import bubbleSortOrd, shellSortOrd
+from .search_algorithms import binary_search, linear_search
+from .ordering_algorithms import bubble_sort, shell_sort
 
 
 def main():
@@ -22,17 +22,17 @@ def main():
             print(numbers)
         elif eq(choice, 2):
             item = get_item()
-            index = linearSearch(numbers=numbers, item=item)
+            index = linear_search(numbers=numbers, item=item)
             print(f'O elemento {item} está na posição {index} do array')
         elif eq(choice, 3):
             item = get_item()
-            index = binarySearch(numbers=numbers, item=item)
+            index = binary_search(numbers=numbers, item=item)
             print(f'O elemento {item} está na posição {index} do array')
         elif eq(choice, 4):
-            _sorted = bubbleSortOrd(numbers=numbers)
+            _sorted = bubble_sort(numbers=numbers)
             print(f'A lista ordenada fica: {_sorted}')
         elif eq(choice, 5):
-            shellSortOrd(numbers=numbers)
+            shell_sort(numbers=numbers)
         elif eq(choice, 6):
             element = get_item()
             _list = delElement(numbers=numbers, element=element)

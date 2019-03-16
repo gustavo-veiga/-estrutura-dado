@@ -1,4 +1,4 @@
-def bubbleSortOrd(numbers: list) -> list:
+def bubble_sort(numbers: list) -> list:
     """
     Algorithm that implement buble sort ordering
 
@@ -27,7 +27,7 @@ def bubbleSortOrd(numbers: list) -> list:
     return _numbers
 
 
-def shellSortOrd(numbers: list) -> list:
+def shell_sort(numbers: list) -> list:
     """
     Algorithm that implement buble sort ordering
 
