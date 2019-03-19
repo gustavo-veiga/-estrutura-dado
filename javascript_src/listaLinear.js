@@ -1,4 +1,5 @@
-/* Ai vai aquela enchurrada de funcao */
+
+/* Abaixo as funcoes de ordenacao  */
 
 function bubbleSort (list) {
     
@@ -22,12 +23,54 @@ function bubbleSort (list) {
     
 }
 
+function newBubbleSort(list) {
+    var n = 0, auxiliarPosicao = 1, troca = 1
+
+    console.time('newBubbleSort')
+    //Ordenacao de forma crescente
+    while(n <= list.length && troca == 1){
+        troca = 0
+
+        for (let i = 0; i <= list.length - 1; i++) {
+            
+            if (list[i] > list[i + 1]) {
+                troca = 1
+                auxiliarPosicao = list[i]
+                list[i] = list[i + 1]
+                list[i + 1] = auxiliarPosicao
+            }
+        }
+        n++
+    }
+    console.timeEnd('newBubbleSort')
+    return list
+}
+function insertionSort(list) {
+    var j, eleito
+
+    console.time('insertionSort')
+    //laco com a quantidade do vetor -1
+    for (let i = 1; i < list.length; i++) {
+        
+        eleito = list[i]
+        j = i - 1
+        
+        while (j >= 0 && list[j] > eleito) {
+            list[j + 1] = list[j]
+            j = j - 1
+        }
+        list[j + 1] = eleito
+    }
+    console.timeEnd('insertionSort')
+}
+
+/*Abaixo funcoes de busca */
 function binarySearch (alvo, list) {
     
-    list = bubbleSort(list)
+    list = newBubbleSort(list)
 
     var startList = 0
-    var endList = list.length -1
+    var endList = list.length - 1
     var valor_encontrado = false
     var meio = 0 
 
@@ -40,6 +83,9 @@ function binarySearch (alvo, list) {
         if (list[meio] == alvo) {
             console.log("O valor que voce deseja esta na posicao: ", Math.floor((startList + endList) / 2))
                 valor_encontrado = true
+                console.timeEnd('binarySearch')
+
+                return Math.floor((startList + endList) / 2)
         }
         if (alvo > list[meio]) {
             startList = meio + 1
@@ -68,42 +114,14 @@ function linearSearch (target, list) {
    }
    console.timeEnd('linearSearch')
 }
-
+/*Abaixo funcao de delete */
 function elementDelete (targetToDelete,list) {
-    console.log("elementDelete")
-
-}
-
-function shellSort (list) {
-    
-    var increment = list.length / 2
-    
-    //Armazenar o tempo de execucao
-    console.time('shellSort')
-
-    while (increment > 0) {
-        for (var i = increment; i < list.length; i++) {
-            var j = i
-            var temp = list[i]
-
-            while (j >= increment && list[j - increment] > temp) {
-                list[j] = list[ j - increment]
-                j = j - increment
-            }
-
-            list[j] = temp
-        }
-
-        if (increment == 2) {
-            increment = 1
-        } else {
-            increment = parseInt(increment * 5 / 11)
-        }
+    var positionToDelete = binarySearch(targetToDelete,list)
+   
+    if( targetToDelete > -1 ) {
+        list.splice(positionToDelete, 1)
+            console.log("O elemento (", targetToDelete, ") foi removido com sucesso!")
     }
-    
-    console.log("Sua lista esta ordenada!")
-    console.timeEnd('shellSort')
-    
 }
 
 //Leitura dos elementos e instancia da lista
@@ -137,10 +155,11 @@ while (condition == true) {
     1 --> Deseja visualizar o a lista ?
     2 --> Realizar busca linear por um elemento.
     3 --> Realizar busca Binaria.
-    4 --> Ordenar com bubble sorte.
-    5 --> Ordenar Com  Shell sorte.
-    6 --> Excluir um elemento.
-    7 --> Encerrar :(
+    4 --> Ordenar com bubble sort.
+    5 --> Excluir um elemento.
+    6 --> Ordenar com bubble sort 2.0.
+    7 --> Ordenar com insertion sort
+    8 --> Sair do programa.
 `)
 
     if (choice == '1'){
@@ -156,21 +175,24 @@ while (condition == true) {
         console.log(listaLinear)
 
         var targetNumber = readline.question("Qual numero deseja procurar : ")
-            binarySearch(targetNumber,listaLinear)
+            binarySearch(targetNumber, listaLinear)
     }
     else if (choice == '4'){
         bubbleSort(listaLinear)
     }
     else if (choice == '5'){
-        shellSort(listaLinear)
-    }
-    else if (choice == '6'){
         console.log(listaLinear)
 
         var targetToDelete = readline.question("Qual numero deseja Deletar da lista : ")
             elementDelete(targetToDelete, listaLinear)
     }
-    else if (choice == '7'){
+    else if (choice == '6'){
+        newBubbleSort(listaLinear)
+    }
+    else if(choice == '7'){
+        insertionSort(listaLinear)
+    }
+    else if (choice == '8'){
         console.log("Pensei que eramos amigos...........")
         condition = false
     }
