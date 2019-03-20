@@ -32,10 +32,12 @@ def main():
             _sorted = bubble_sort(numbers=numbers)
             print(f'A lista ordenada fica: {_sorted}')
         elif eq(choice, 5):
-            shell_sort(numbers=numbers)
+            element = get_item()
+            _list = delElement(numbers=numbers, element=element, method='ordered')
+            print(f'Lista após deleção: {_list}')
         elif eq(choice, 6):
             element = get_item()
-            _list = delElement(numbers=numbers, element=element)
+            _list = delElement(numbers=numbers, element=element, method=None)
             print(f'Lista após deleção: {_list}')
         elif eq(choice, 7):
             closeProgram()

@@ -1,4 +1,6 @@
 from random import randint
+from .search_algorithms import binary_search, linear_search
+from .ordering_algorithms import bubble_sort
 
 
 def closeProgram():
@@ -6,7 +8,7 @@ def closeProgram():
     exit()
 
 
-def delElement(numbers: list, element: int) -> int:
+def delElement(numbers: list, element: int, method: str) -> int:
     """
     Delete element from the list
 
@@ -25,7 +27,32 @@ def delElement(numbers: list, element: int) -> int:
     list
         The final list with random numbers, without element
     """
-    return [ number for number in numbers if number != element ]
+    if method == 'ordered':
+        _numbers = bubble_sort(numbers=numbers)
+        index = binary_search(numbers=_numbers, item=element)
+
+        print(f'Lista ordenada: {_numbers}')
+
+        if index == -1:
+            return _numbers
+
+        for i in range(index, len(_numbers) - 1):
+            _numbers[i] = _numbers[i + 1]
+            _numbers[i + 1] = None
+
+        return _numbers
+    
+    index = linear_search(numbers=numbers, item=element)
+
+    if index == -1:
+        return numbers
+
+    _numbers = [ number for number in numbers ]
+    last_index = len(_numbers) - 1
+    _numbers[index] = _numbers[last_index]
+    _numbers[last_index] = None
+
+    return _numbers
 
 
 def get_item():
