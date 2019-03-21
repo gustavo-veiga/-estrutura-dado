@@ -14,15 +14,19 @@ def bubble_sort(numbers: list) -> list:
     list
     """
     _numbers = [ number for number in numbers ]
-    _sorted = False
+    swaped = True
 
-    while not _sorted:
-        _sorted = True
+    n = 1
+
+    while swaped and n <= len(numbers):
+        swaped = False
 
         for i in range(len(_numbers) - 1):
             if _numbers[i] > _numbers[i+1]:
                 _numbers[i], _numbers[i+1] = _numbers[i+1],_numbers[i]
-                _sorted = False        
+                swaped = True
+        
+        n += 1
 
     return _numbers
 
