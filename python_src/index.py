@@ -3,7 +3,7 @@ from operator import eq
 from .menu import show_menu
 from .helpers import closeProgram, delElement, generate_random_numbers, get_choice, get_initial_parameters, get_item
 from .search_algorithms import binary_search, linear_search
-from .ordering_algorithms import bubble_sort, shell_sort
+from .ordering_algorithms import bubble_sort, quick_sort
 
 
 def main():
@@ -32,12 +32,15 @@ def main():
             _sorted = bubble_sort(numbers=numbers)
             print(f'A lista ordenada fica: {_sorted}')
         elif eq(choice, 5):
+            _sorted = quick_sort(numbers=numbers)
+            print(f'A lista ordenada fica: {_sorted}')
+        elif eq(choice, 6):
             element = get_item()
             _list = delElement(numbers=numbers, element=element, method='ordered')
             print(f'Lista após deleção: {_list}')
-        elif eq(choice, 6):
+        elif eq(choice, 7):
             element = get_item()
             _list = delElement(numbers=numbers, element=element, method=None)
             print(f'Lista após deleção: {_list}')
-        elif eq(choice, 7):
+        elif eq(choice, 8):
             closeProgram()
