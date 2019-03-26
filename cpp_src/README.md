@@ -2,6 +2,7 @@
 Este projeto é uma implementação em C++ dos exercícios de Estrutura de Dados
 
 Requerimentos Gerais
+* Ferramentas de Compilação do Sistema Operacional
 * Compilador com suporte a C++11
 * CMake
 
@@ -9,24 +10,32 @@ Requerimentos Gerais
 ### Linux (GCC)
 Necessita do [GCC 4.8.1][1] (onde o C++11 é completamente implementado) ou superior, make e cmake.
 
-No Ubuntu, instale o `g++`, `make` e o `cmake`
+No Debian e derivados, instale o `g++`, `cmake` e o `make` ou `ninja-build`
 ```sh
-sudo apt install g++ make cmake
+sudo apt install g++ cmake make
+```
+```sh
+sudo apt install g++ cmake ninja-build
 ```
 
-Crie um diretório `build` para a compilação
+Criando arquivos de compilação
 ```sh
-mkdir build && cd $_
+cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=MINSIZEREL -H. -Bbuild
 ```
 
-Execute o CMake e compile
+Ou utilizando o Ninja Build, que é muito mais rápido que o velho GNU Make
 ```sh
-cmake .. && make
+cmake -G "Ninja" -DCMAKE_BUILD_TYPE=MINSIZEREL -H. -Bbuild
+```
+
+Criando arquivos binários
+```sh
+cmake --build build
 ```
 
 Execute
 ```sh
-./binary
+./build/binary
 ```
 
 [1]:[https://gcc.gnu.org/projects/cxx-status.html#cxx11]
