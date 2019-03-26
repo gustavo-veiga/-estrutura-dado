@@ -1,4 +1,5 @@
 #include <iostream>
+#include <this/helper.hpp>
 #include <this/print.hpp>
 #include <this/search.hpp>
 #include <this/sort.hpp>
@@ -20,9 +21,7 @@ int show() {
   return choise;
 }
 
-void show_all(std::vector<int> &vec) {
-  std::cout << vec << std::endl;
-}
+void show_all(std::vector<int> &vec) { std::cout << vec << std::endl; }
 
 void linear_search(std::vector<int> &v) {
   int search;
@@ -44,7 +43,7 @@ void binary_search(std::vector<int> &vec) {
   int result;
   std::cout << "Insira o elemento a ser buscado: ";
   std::cin >> search;
-  if(!aula::is_sorted(vec)) {
+  if (!aula::is_sorted(vec)) {
     aula::quick_sort(vec, 0, vec.size() - 1);
   }
   result = aula::binary_search(vec, search);
@@ -68,10 +67,14 @@ void quick_sort(std::vector<int> &vec) {
 }
 
 void remove_one_element(std::vector<int> &vec) {
-  int position;
+  unsigned long long position;
   std::cout << "Insira o indice do elemento a ser removido: ";
   std::cin >> position;
-  vec.erase(vec.begin() + position);
+  if(aula::is_sorted(vec)) {
+    aula::remove_element_vector_sorted(vec, position);
+  } else {
+    aula::remove_element_vector_not_sorted(vec, position);
+  }
 }
 
 void exit() {
