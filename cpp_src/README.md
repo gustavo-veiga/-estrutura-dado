@@ -8,7 +8,7 @@ Requerimentos Gerais
 
 ## Compilação
 ### Linux (GCC)
-Necessita do [GCC 4.8.1][1] (onde o C++11 é completamente implementado) ou superior, make e cmake.
+Necessita do [GCC 4.8.1][1] (onde o C++11 é completamente implementado) ou superior.
 
 No Debian e derivados, instale o `g++`, `cmake` e o `make` ou `ninja-build`
 ```sh
@@ -23,7 +23,7 @@ Criando arquivos de compilação
 cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=MINSIZEREL -H. -Bbuild
 ```
 
-Ou utilizando o Ninja Build, que é muito mais rápido que o velho GNU Make
+Ou utilizando o Ninja, que é muito mais rápido que o velho GNU Make
 ```sh
 cmake -G "Ninja" -DCMAKE_BUILD_TYPE=MINSIZEREL -H. -Bbuild
 ```
