@@ -1,11 +1,11 @@
-#Readme JS
+# Readme JS
 
 Bem-vindo ao readme dos arquivos .JS, abaixo temos as funcionalidades e
 uma especie de controle de versão dos arquivos. Cada arquivo possui 
 um algo a mais, um plus de funcionalidades do que seu antecessor, que irão
 crescendo de acordo com o avanço da disciplina.
 
-##Estrututa de pastas e arquivos:  
+## Estrututa de pastas e arquivos:  
 
 ```bash
 ./javascript_src  
@@ -34,11 +34,11 @@ Apos os comandos podemos executar qualquer um dos arquivos, com os comandos:
 ```
 -----
 
-##Primeiro arquivo, lista.js: 
+## Primeiro arquivo, lista.js: 
 O programa possui todas as funcionalidades que foi pedido por e-mail.
 OBS: Neste programa o método de exclusão foi feito através de uma
 "facilidade" da linguagem.  
-Abaixo a lista de funcionalidades:  
+(Abaixo as funcionalidades minimas que o programa deve ter) 
 
 ```
 1 – Exibir o vetor
@@ -55,9 +55,9 @@ Abaixo a lista de funcionalidades:
 
 ```
 
-##Segundo arquivo, lista_plus_plus.js:
+## Segundo arquivo, lista_plus.js:
 Este programa e uma melhoria do anterior, possuindo o método de ordenação
-QuickSort e um método de deleção implementado.   
+QuickSort e um método de deleção implementado.(Abaixo as funcionalidades minimas que o programa deve ter)   
 
 ```
 1 – Exibir o vetor
