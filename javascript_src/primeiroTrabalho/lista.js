@@ -1,6 +1,5 @@
 
 /* Abaixo as funcoes de ordenacao  */
-
 function bubbleSort (list) {
     
     //Armazenar tempo de execucao

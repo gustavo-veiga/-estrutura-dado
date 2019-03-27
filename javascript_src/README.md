@@ -3,7 +3,7 @@
 Bem-vindo ao readme dos arquivos .JS, abaixo temos as funcionalidades e
 uma especie de controle de versão dos arquivos. Cada arquivo possui 
 um algo a mais, um plus de funcionalidades do que seu antecessor, que irão
-crescendo de acordo com o avanço da disciplina.  
+crescendo de acordo com o avanço da disciplina.
 
 ##Estrututa de pastas e arquivos:  
 
