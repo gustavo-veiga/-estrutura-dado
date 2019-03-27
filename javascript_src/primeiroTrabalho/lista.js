@@ -94,7 +94,6 @@ function binarySearch (alvo, list) {
         }
     }
     console.timeEnd('binarySearch')
-
 }
 
 function linearSearch (target, list) {
