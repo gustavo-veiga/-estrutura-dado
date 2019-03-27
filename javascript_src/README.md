@@ -22,8 +22,8 @@ crescendo de acordo com o avanço da disciplina.
 Importante, para executar os arquivos e necessário ter o nodejs instalado na maquina. Com o node previamente instalado execute os comandos no terminal, dentro da pasta /javascript_src.
 
 ```bash
-	Npm install
-	Npm i readline-sinc
+	npm install
+	npm i readline-sinc
 ```
 
 Apos os comandos podemos executar qualquer um dos arquivos, com os comandos:
