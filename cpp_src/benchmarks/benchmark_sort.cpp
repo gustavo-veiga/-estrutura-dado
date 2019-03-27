@@ -34,7 +34,7 @@ int main() {
 
   // Bubble Sort
   chrono([&is_sorted](std::vector<int> vec) {
-    std::cout << "Bubble Sort... ";
+    std::cout << "Bubble Sort... " << std::flush;
     aula::bubble_sort(vec);
     std::cout << "Completed!" << std::endl;
     is_sorted(vec);
@@ -42,7 +42,7 @@ int main() {
 
   // Bubble Sort Enhanced
   chrono([&is_sorted](std::vector<int> vec) {
-    std::cout << "Bubble Sort Enhanced... ";
+    std::cout << "Bubble Sort Enhanced... " << std::flush;
     aula::bubble_sort_enhanced(vec);
     std::cout << "Completed!" << std::endl;
     is_sorted(vec);
@@ -50,7 +50,7 @@ int main() {
 
   // Quick Sort
   chrono([&is_sorted](std::vector<int> vec) {
-    std::cout << "Quick Sort... ";
+    std::cout << "Quick Sort... " << std::flush;
     aula::quick_sort(vec, 0, SIZE - 1);
     std::cout << "Completed!" << std::endl;
     is_sorted(vec);
