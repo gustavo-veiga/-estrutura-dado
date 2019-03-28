@@ -3,7 +3,7 @@
 #include <functional>
 #include <iostream>
 #include <random>
-#include <this/sort.hpp>
+#include <lesson/sort.hpp>
 #include <vector>
 #define SIZE 100000
 

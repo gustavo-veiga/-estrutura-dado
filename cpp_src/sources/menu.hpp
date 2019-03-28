@@ -1,8 +1,8 @@
 #include <iostream>
-#include <this/helper.hpp>
-#include <this/print.hpp>
-#include <this/search.hpp>
-#include <this/sort.hpp>
+#include <lesson/helper.hpp>
+#include <lesson/print.hpp>
+#include <lesson/search.hpp>
+#include <lesson/sort.hpp>
 #include <vector>
 
 namespace menu {
