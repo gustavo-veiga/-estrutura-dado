@@ -1,3 +1,4 @@
+#include <lesson/console.h>
 #include <lesson/helper.h>
 #include <lesson/search.h>
 #include <lesson/sort.h>
@@ -8,6 +9,9 @@
 namespace menu {
 int show() {
   int choise;
+  for (size_t i = 1; i < lesson::console::width(); i++) {
+    std::cout << "-";
+  }
   std::cout << std::endl;
   std::cout << "1 - Exibir o vetor" << std::endl;
   std::cout << "2 - Ordenar os elementos (Quick Sort)" << std::endl;
