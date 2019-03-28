@@ -1,5 +1,5 @@
 from unittest import TestCase
-from python_src.helpers import generate_random_numbers
+from estrutura_dados.helpers import generate_random_numbers
 
 
 class RandomNumbers(TestCase):
