@@ -1,5 +1,5 @@
-#ifndef PRINT_HPP_
-#define PRINT_HPP_
+#ifndef LESSON_HELPER_H_
+#define LESSON_HELPER_H_
 #include <algorithm>
 #include <iostream>
 #include <iterator>

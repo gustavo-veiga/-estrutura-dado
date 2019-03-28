@@ -1,9 +1,7 @@
-#ifndef VECTOR_HPP_
-#define VECTOR_HPP_
 #include <vector>
+#include "vector.h"
 
-namespace aula {
-void remove_element_vector_not_sorted(std::vector<int> &vec, size_t index) {
+void lesson::vector::remove_element_vector_not_sorted(std::vector<int> &vec, size_t index) {
   std::vector<int> new_vector(vec.size() - 1);
   std::swap(vec[index], vec[vec.size() - 1]);
   for (size_t i = 0; i < new_vector.size(); i++) {
@@ -11,7 +9,7 @@ void remove_element_vector_not_sorted(std::vector<int> &vec, size_t index) {
   }
   vec = new_vector;
 }
-void remove_element_vector_sorted(std::vector<int> &vec, size_t index) {
+void lesson::vector::remove_element_vector_sorted(std::vector<int> &vec, size_t index) {
   std::vector<int> new_vector(vec.size() - 1);
   for (size_t i = index; i < vec.size(); i++) {
     vec[i] = vec[i + 1];
@@ -21,6 +19,4 @@ void remove_element_vector_sorted(std::vector<int> &vec, size_t index) {
   }
   vec = new_vector;
 }
-}  // namespace aula
 
-#endif

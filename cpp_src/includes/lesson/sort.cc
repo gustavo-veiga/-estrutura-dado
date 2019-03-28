@@ -1,9 +1,7 @@
-#ifndef SORT_HPP_
-#define SORT_HPP_
+#include "sort.h"
 #include <vector>
 
-namespace aula {
-bool is_sorted(std::vector<int>& vec) {
+bool lesson::is_sorted(std::vector<int>& vec) {
   if (vec.size() == 0 || vec.size() == 1) {
     return true;
   }
@@ -15,7 +13,7 @@ bool is_sorted(std::vector<int>& vec) {
   return true;
 }
 
-void bubble_sort(std::vector<int>& vec) {
+void lesson::bubble_sort(std::vector<int>& vec) {
   for (size_t i = 0; i < vec.size() - 1; i++) {
     for (size_t j = 0; j < vec.size() - i - 1; j++) {
       if (vec[j] > vec[j + 1]) {
@@ -25,7 +23,7 @@ void bubble_sort(std::vector<int>& vec) {
   }
 }
 
-void bubble_sort_enhanced(std::vector<int>& vec) {
+void lesson::bubble_sort_enhanced(std::vector<int>& vec) {
   size_t i = 0, j = 1;
   bool sorted = false;
 
@@ -41,7 +39,7 @@ void bubble_sort_enhanced(std::vector<int>& vec) {
   }
 }
 
-void quick_sort(std::vector<int>& vec, int left, int right) {
+void lesson::quick_sort(std::vector<int>& vec, int left, int right) {
   int tmp;
   int i = left, j = right;
   int pivot = vec[(left + right) / 2];
@@ -57,9 +55,6 @@ void quick_sort(std::vector<int>& vec, int left, int right) {
       j--;
     }
   };
-  if (left < j) quick_sort(vec, left, j);
-  if (i < right) quick_sort(vec, i, right);
+  if (left < j) lesson::quick_sort(vec, left, j);
+  if (i < right) lesson::quick_sort(vec, i, right);
 }
-}  // namespace aula
-
-#endif
