@@ -1,15 +1,13 @@
 #include <lesson/console.h>
-#include <lesson/helper.h>
 #include <lesson/search.h>
 #include <lesson/sort.h>
 #include <lesson/vector.h>
 #include <iostream>
-#include <vector>
 
 namespace menu {
 int show() {
   int choise;
-  for (size_t i = 1; i < lesson::console::width(); i++) {
+  for (size_t i = 1; i < lesson::console::columns(); i++) {
     std::cout << "-";
   }
   std::cout << std::endl;
@@ -25,32 +23,33 @@ int show() {
   return choise;
 }
 
-void show_all(std::vector<int> &vec) { std::cout << vec << std::endl; }
+void show_all(lesson::vector &vec) {
+  std::cout << "{ ";
+  for (int i = 0; i <= vec.end(); i++) {
+    std::cout << vec.get(i) << " ";
+  }
+  std::cout << "}" << std::endl;
+}
 
-void linear_search(std::vector<int> &v) {
+void linear_search(lesson::vector &vec) {
   int search;
   std::cout << "Insira o elemento a ser buscado: ";
   std::cin >> search;
-  std::vector<size_t> results = lesson::linear_search_all(v, search);
-  if (results.size() > 0) {
-    std::cout << "Elemento encontrado nas seguites posicoes  " << std::endl;
-    std::cout << results << std::endl;
+  int result = lesson::search::linear(vec, search);
+  if (result >= 0) {
+    std::cout << "Elemento encontrado na posicao  " << result << std::endl;
   } else {
     std::cout << "Elemento nao encontrado" << std::endl;
   }
-  results.clear();
-  results.shrink_to_fit();
 }
 
-void binary_search(std::vector<int> &vec) {
+void binary_search(lesson::vector &vec) {
   int search;
   int result;
+  lesson::sort::quick(vec, 0, vec.end());
   std::cout << "Insira o elemento a ser buscado: ";
   std::cin >> search;
-  if (!lesson::is_sorted(vec)) {
-    lesson::quick_sort(vec, 0, vec.size() - 1);
-  }
-  result = lesson::binary_search(vec, search);
+  result = lesson::search::binary(vec, search);
   if (result >= 0) {
     std::cout << "Elemento encontrado na posicao " << result << std::endl;
   } else {
@@ -58,27 +57,23 @@ void binary_search(std::vector<int> &vec) {
   }
 }
 
-void bubble_sort(std::vector<int> &vec) {
-  lesson::bubble_sort(vec);
+void bubble_sort(lesson::vector &vec) {
+  lesson::sort::bubble(vec);
   std::cout << "Os elementos foram ordenados!" << std::endl;
-  std::cout << vec << std::endl;
+  show_all(vec);
 }
 
-void quick_sort(std::vector<int> &vec) {
-  lesson::quick_sort(vec, 0, vec.size() - 1);
+void quick_sort(lesson::vector &vec) {
+  lesson::sort::quick(vec, 0, vec.end());
   std::cout << "Os elementos foram ordenados!" << std::endl;
-  std::cout << vec << std::endl;
+  show_all(vec);
 }
 
-void remove_one_element(std::vector<int> &vec) {
-  unsigned long long position;
+void remove_element(lesson::vector &vec) {
+  int index;
   std::cout << "Insira o indice do elemento a ser removido: ";
-  std::cin >> position;
-  if (lesson::is_sorted(vec)) {
-    lesson::vector::remove_element_vector_sorted(vec, position);
-  } else {
-    lesson::vector::remove_element_vector_not_sorted(vec, position);
-  }
+  std::cin >> index;
+  vec.remove(index);
 }
 
 void exit() {

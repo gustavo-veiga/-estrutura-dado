@@ -14,5 +14,5 @@ file(GLOB HEADERS "includes/lesson/*")
 
 include_directories(includes)
 
-add_executable(binary ${SOURCES}/main.cpp  ${HEADERS})
-add_executable(benchmark_sort ${BENCHMARKS}/benchmark_sort.cpp ${HEADERS})
+add_executable(binary ${SOURCES}/main.cpp ${HEADERS})
+#add_executable(benchmark_sort ${BENCHMARKS}/benchmark_sort.cpp ${HEADERS})

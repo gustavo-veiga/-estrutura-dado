@@ -3,10 +3,9 @@
 
 namespace lesson {
 struct console {
-  static int height();
-  static int width();
+  static int rows();
+  static int columns();
 };
-
-}  // namespace aula
+}  // namespace lesson
 
 #endif

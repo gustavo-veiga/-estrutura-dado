@@ -1,8 +1,6 @@
-#include <algorithm>
+#include <lesson/vector.h>
 #include <iostream>
-#include <iterator>
 #include <random>
-#include <vector>
 #include "menu.hpp"
 
 int main() {
@@ -17,15 +15,14 @@ int main() {
   std::cout << "Insira o maior valor: ";
   std::cin >> max_value;
 
-  std::vector<int> elements(size);
+  auto elements = lesson::vector(size);
   std::random_device rd;
   std::mt19937 gen(rd());
   std::uniform_int_distribution<> dis(min_value, max_value);
 
-  std::generate(elements.begin(), elements.end(), [&dis, &gen]() {
-    // return rand() % max_value + min_value;
-    return dis(gen);
-  });
+  for (int i = 0; i < size; i++) {
+    elements.add(dis(gen));
+  }
 
   while (true) {
     int choise = menu::show();
@@ -46,7 +43,7 @@ int main() {
         menu::binary_search(elements);
         break;
       case 6:
-        menu::remove_one_element(elements);
+        menu::remove_element(elements);
         break;
       case 7:
         menu::exit();

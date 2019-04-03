@@ -1,60 +1,31 @@
 #include "sort.h"
-#include <vector>
+#include "vector.h"
 
-bool lesson::is_sorted(std::vector<int>& vec) {
-  if (vec.size() == 0 || vec.size() == 1) {
-    return true;
-  }
-  for (size_t i = 0; i < vec.size() - 1; i++) {
-    if (vec[i] > vec[i + 1]) {
-      return false;
-    }
-  }
-  return true;
-}
-
-void lesson::bubble_sort(std::vector<int>& vec) {
-  for (size_t i = 0; i < vec.size() - 1; i++) {
-    for (size_t j = 0; j < vec.size() - i - 1; j++) {
-      if (vec[j] > vec[j + 1]) {
-        std::swap(vec[j], vec[j + 1]);
+void lesson::sort::bubble(lesson::vector& vec) {
+  for (int i = 0; i < vec.end(); i++) {
+    for (int j = 0; j < vec.end() - i; j++) {
+      if (vec.get(j) > vec.get(j + 1)) {
+        vec.swap(j, j + 1);
       }
     }
   }
 }
 
-void lesson::bubble_sort_enhanced(std::vector<int>& vec) {
-  size_t i = 0, j = 1;
-  bool sorted = false;
-
-  while (!sorted) {
-    sorted = true;
-    for (i = 0; i < vec.size() - j; i++) {
-      if (vec[i] > vec[i + 1]) {
-        std::swap(vec[i], vec[i + 1]);
-        sorted = false;
-      }
-    }
-    j++;
-  }
-}
-
-void lesson::quick_sort(std::vector<int>& vec, int left, int right) {
+void lesson::sort::quick(lesson::vector& vec, int left, int right) {
   int tmp;
   int i = left, j = right;
-  int pivot = vec[(left + right) / 2];
-
+  int pivot = vec.get((left + right) / 2);
   while (i <= j) {
-    while (vec[i] < pivot) i++;
-    while (vec[j] > pivot) j--;
+    while (vec.get(i) < pivot) i++;
+    while (vec.get(j) > pivot) j--;
     if (i <= j) {
-      tmp = vec[i];
-      vec[i] = vec[j];
-      vec[j] = tmp;
+      tmp = vec.get(i);
+      vec.set(i, vec.get(j));
+      vec.set(j, tmp);
       i++;
       j--;
     }
   };
-  if (left < j) lesson::quick_sort(vec, left, j);
-  if (i < right) lesson::quick_sort(vec, i, right);
+  if (left < j) lesson::sort::quick(vec, left, j);
+  if (i < right) lesson::sort::quick(vec, i, right);
 }
