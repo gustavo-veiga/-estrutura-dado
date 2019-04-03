@@ -2,68 +2,75 @@
 /* Abaixo as funcoes de ordenacao  */
 function bubbleSort (list) {
     
+    const listCopy = [ ...list]
     //Armazenar tempo de execucao
     //console.time('bubbleSort')
 
-    for(var i = 0; i < list.length; i++){
-        for(var j = 0; j < list.length; j++){
-            if (list[j] > list[j + 1]) {
-                var temp = list[j + 1]
-                list[j + 1] = list[j]
-                list[j] = temp
+    for(var i = 0; i < listCopy.length; i++){
+        for(var j = 0; j < listCopy.length; j++){
+            if (listCopy[j] > listCopy[j + 1]) {
+                var temp = listCopy[j + 1]
+                listCopy[j + 1] = listCopy[j]
+                listCopy[j] = temp
             }
         }
     }
 
     console.log("Sua lista esta ordenada!")
+        console.log(listCopy)
     //console.timeEnd('bubbleSort')
 
-    return list
+    return listCopy
 }
 
 function newBubbleSort(list) {
     var n = 0, auxiliarPosicao = 1, troca = 1
+    const listCopy = [ ...list]
 
     //console.time('newBubbleSort')
     //Ordenacao de forma crescente
-    while(n <= list.length && troca == 1){
+    while(n <= listCopy.length && troca == 1){
         troca = 0
 
-        for (let i = 0; i <= list.length - 1; i++) {
+        for (let i = 0; i <= listCopy.length - 1; i++) {
             
-            if (list[i] > list[i + 1]) {
+            if (listCopy[i] > listCopy[i + 1]) {
                 troca = 1
-                auxiliarPosicao = list[i]
-                list[i] = list[i + 1]
-                list[i + 1] = auxiliarPosicao
+                auxiliarPosicao = listCopy[i]
+                listCopy[i] = listCopy[i + 1]
+                listCopy[i + 1] = auxiliarPosicao
             }
         }
         n++
     }
     //console.timeEnd('newBubbleSort')
     console.log("Sua lista esta ordenada!")
-    return list
+        console.log(listCopy)
+    return listCopy
 }
 
 function insertionSort(list) {
     var j, eleito
 
+    const listCopy = [ ...list ]
+
     //console.time('insertionSort')
     //laco com a quantidade do vetor -1
 
-    for (let i = 1; i < list.length; i++) {
+    for (let i = 1; i < listCopy.length; i++) {
         
-        eleito = list[i]
+        eleito = listCopy[i]
         j = i - 1
         
-        while (j >= 0 && list[j] > eleito) {
-            list[j + 1] = list[j]
+        while (j >= 0 && listCopy[j] > eleito) {
+            listCopy[j + 1] = listCopy[j]
             j = j - 1
         }
-        list[j + 1] = eleito
+        listCopy[j + 1] = eleito
     }
     //console.timeEnd('insertionSort')
     console.log("Sua lista esta ordenada!")
+        console.log(listCopy)
 }
 
 function quickSort (list) {
@@ -91,7 +98,7 @@ function quickSort (list) {
 
 /*Abaixo funcoes de busca */
 function binarySearch (alvo, list) {
-    
+
     list = newBubbleSort(list)
 
     var startList = 0
@@ -117,7 +124,7 @@ function binarySearch (alvo, list) {
             endList = meio - 1
         }
         
-    } return console.log("Numero inexistente!")
+    } return console.log("Deu ruim rapaz, numero nao encontrado!")
     //console.timeEnd('binarySearch')
 
 }
@@ -141,7 +148,7 @@ function linearSearch (target, list) {
         i++
 
         if(i == list.length){
-            console.log("Numero inexistente!")
+            console.log("Deu ruim rapaz, numero nao encontrado!")
             condition = true
         }        
          

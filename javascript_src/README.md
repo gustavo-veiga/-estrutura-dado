@@ -18,6 +18,7 @@ crescendo de acordo com o avanço da disciplina.
  |	|
  |	|__  lista_plus.js
  ```
+ ## Rodando os scripts (Ambiente Linux)  
  
 Importante, para executar os arquivos e necessário ter o nodejs instalado na maquina. Com o node previamente instalado execute os comandos no terminal, dentro da pasta /javascript_src.
 
