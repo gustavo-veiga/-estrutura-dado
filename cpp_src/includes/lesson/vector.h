@@ -12,7 +12,6 @@ class vector {
   vector(int size);
   ~vector();
   int end();
-  int begin();
   int get(int index);
   void add(int element);
   void set(int index, int element);
