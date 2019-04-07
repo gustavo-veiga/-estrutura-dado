@@ -128,3 +128,7 @@ def get_initial_parameters():
         'start': start,
         'end': end
     }
+
+
+def copy_list(_list: list) -> list:
+    return [ item for item in _list ]
