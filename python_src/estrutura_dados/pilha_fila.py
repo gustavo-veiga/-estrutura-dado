@@ -1,7 +1,7 @@
 from operator import eq
 
-from .helpers import closeProgram, generate_random_numbers, get_choice, get_initial_parameters, get_item
-from .pilha import pilha_mode
+from .helpers import closeProgram, generate_random_numbers, get_choice, get_initial_parameters, get_item, execute_data_struct
+from .structs import Pilha, Fila
 
 
 def show_menu():
@@ -34,6 +34,10 @@ def main():
         if eq(choice, 1):
             print(numbers)
         elif eq(choice, 2):
-            pilha_mode(numbers=numbers)
+            pilha = Pilha(data=numbers)
+            execute_data_struct(struct=pilha, label='pilha')
+        elif eq(choice, 3):
+            fila = Fila(data=numbers)
+            execute_data_struct(struct=fila, label='fila')
         elif eq(choice, 4):
             closeProgram()

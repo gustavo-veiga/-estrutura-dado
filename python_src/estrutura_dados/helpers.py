@@ -1,4 +1,5 @@
 from random import randint
+from operator import eq
 from .search_algorithms import binary_search, linear_search
 from .ordering_algorithms import bubble_sort
 
@@ -132,3 +133,69 @@ def get_initial_parameters():
 
 def copy_list(_list: list) -> list:
     return [ item for item in _list ]
+
+
+def show_to_struct_menu(label):
+    """
+    Show menu to struct data functions
+
+    Parameters
+    ----------
+
+    label : str
+        The question
+
+    Returns
+    -------
+
+    int
+    """
+    print(f"""
+    Você está em modo {label}, escolha uma das opções
+
+    1 --> Visualizar {label}?
+    2 --> Inserir elemento
+    3 --> Remover elemento
+    4 --> Voltar ao programa inicial
+    """)
+
+    choice = input("Opcao: ")
+
+    return int(choice)
+
+
+def execute_data_struct(struct, label):
+    """
+    Process operations in structs
+
+    Parameters
+    ----------
+
+    struct: any
+        Can be: Pilha or Fila objects
+
+    label : str
+        The question
+
+    Returns
+    -------
+
+    None
+    """
+    while True:
+        choice = show_to_struct_menu(label=label)
+
+        if eq(choice, 1):
+            print(struct)
+        elif eq(choice, 2):
+            elemento = int(input('Digite um número: '))
+            struct.push(elemento)
+            print(f'Estrutura resultante: {struct}')
+        elif eq(choice, 3):
+            elemento = struct.pop()
+            print(f'Elemento removido: {elemento}')
+            print(f'Estrutura resultante: {struct}')
+        elif eq(choice, 4):
+            break
+    
+    return None

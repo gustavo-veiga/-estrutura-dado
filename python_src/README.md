@@ -20,7 +20,11 @@ source bin/activate
 Após isso, basta executar o script main.py para abrir a aplicação de linha de comando
 
 ```sh
-python main.py
+# para o código dos algorítmos de ordenação, exclusão e filtro
+python manage.py algorithms
+
+# para o código das estruturas de dados
+python manage.py structs
 ```
 
 ### Tests
