@@ -1,5 +1,7 @@
 from argparse import ArgumentParser
 from unittest import TestLoader, runner
+from estrutura_dados import pilha_fila
+from estrutura_dados import index
 
 parser = ArgumentParser(prog='Manage')
 
@@ -20,5 +22,7 @@ def tests():
 
 
 modes = {
-    'tests': tests
+    'tests': tests,
+    'structs': pilha_fila.main,
+    'algorithms': index.main
 }[args.mode]()
