@@ -1,5 +1,5 @@
-#ifndef CONSOLE_HPP_
-#define CONSOLE_HPP_
+#ifndef CONSOLE_H_
+#define CONSOLE_H_
 
 namespace lesson {
 struct console {
