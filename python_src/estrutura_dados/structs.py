@@ -15,6 +15,9 @@ class Pilha:
         self.data = copy_list(_list=items)
     
     def pop(self):
+        if len(self.data) == 0:
+            return None
+
         first = self.data[0]
         numbers = copy_list(_list=self.data)
         for (index, _) in enumerate(self.data):
@@ -42,6 +45,9 @@ class Fila:
         self.data.append(value)
     
     def pop(self):
+        if len(self.data) == 0:
+            return None
+
         first = self.data[0]
         numbers = copy_list(_list=self.data)
         for (index, _) in enumerate(self.data):
