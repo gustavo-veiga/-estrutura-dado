@@ -9,12 +9,19 @@ void lesson::sort::bubble(lesson::vector& vec) {
       }
     }
   }
+  vec.is_sorted = true;
+}
+
+void lesson::sort::quick(lesson::vector& vec) {
+  lesson::sort::quick(vec, 0, vec.end());
+  vec.is_sorted = true;
 }
 
 void lesson::sort::quick(lesson::vector& vec, int left, int right) {
   int tmp;
   int i = left, j = right;
   int pivot = vec.get((left + right) / 2);
+
   while (i <= j) {
     while (vec.get(i) < pivot) i++;
     while (vec.get(j) > pivot) j--;

@@ -29,6 +29,10 @@ int lesson::console::columns() {
   return size.ws_col;
 }
 #else
-int lesson::console::row() { return 0; }
-int lesson::console::columns() { return 0; }
+int lesson::console::row() {
+  return 0;
+}
+int lesson::console::columns() {
+  return 0;
+}
 #endif

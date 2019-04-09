@@ -1,3 +1,4 @@
+#include <lesson/chrono.h>
 #include <lesson/console.h>
 #include <lesson/search.h>
 #include <lesson/sort.h>
@@ -46,9 +47,11 @@ void linear_search(lesson::vector &vec) {
 void binary_search(lesson::vector &vec) {
   int search;
   int result;
-  lesson::sort::quick(vec, 0, vec.end());
   std::cout << "Insira o elemento a ser buscado: ";
   std::cin >> search;
+  if (!vec.is_sorted) {
+    lesson::sort::quick(vec);
+  }
   result = lesson::search::binary(vec, search);
   if (result >= 0) {
     std::cout << "Elemento encontrado na posicao " << result << std::endl;
@@ -58,14 +61,20 @@ void binary_search(lesson::vector &vec) {
 }
 
 void bubble_sort(lesson::vector &vec) {
-  lesson::sort::bubble(vec);
-  std::cout << "Os elementos foram ordenados!" << std::endl;
+  double time = lesson::chrono::duration([&vec]() {
+    lesson::sort::bubble(vec);
+  });
+  std::cout << "Os elementos foram ordenados em um tempo de " << time
+            << " segundos." << std::endl;
   show_all(vec);
 }
 
 void quick_sort(lesson::vector &vec) {
-  lesson::sort::quick(vec, 0, vec.end());
-  std::cout << "Os elementos foram ordenados!" << std::endl;
+  double time = lesson::chrono::duration([&vec]() {
+    lesson::sort::quick(vec);
+  });
+  std::cout << "Os elementos foram ordenados em um tempo de " << time
+            << " segundos." << std::endl;
   show_all(vec);
 }
 
@@ -81,5 +90,7 @@ void exit() {
   std::exit(EXIT_SUCCESS);
 }
 
-void invalid() { std::cout << "Opcao invalida" << std::endl; }
+void invalid() {
+  std::cout << "Opcao invalida" << std::endl;
+}
 }  // namespace menu

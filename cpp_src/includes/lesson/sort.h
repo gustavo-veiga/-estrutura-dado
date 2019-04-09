@@ -3,9 +3,13 @@
 #include "vector.h"
 
 namespace lesson {
-struct sort {
-  static void bubble(lesson::vector& vec);
+class sort {
+ private:
   static void quick(lesson::vector& vec, int left, int right);
+
+ public:
+  static void quick(lesson::vector& vec);
+  static void bubble(lesson::vector& vec);
 };
 }  // namespace lesson
 
