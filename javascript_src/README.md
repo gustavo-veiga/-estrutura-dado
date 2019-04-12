@@ -27,11 +27,13 @@ Importante, para executar os arquivos e necessário ter o nodejs instalado na ma
 	npm i readline-sinc
 ```
 
-Apos os comandos podemos executar qualquer um dos arquivos, com os comandos:
+Apos a instalacao das dependencias podemos executar qualquer um dos arquivos, com os comandos:
 
 ```bash
 	node primeiroTrabalho/lista.js
 	node segundoTrabalho/lista_plus.js
+	node javascript_src/Pilha_Fila/pilha.js
+	node javascript_src/Pilha_Fila/fila.js
 ```
 -----
 
@@ -78,3 +80,9 @@ QuickSort e um método de deleção implementado.(Abaixo as funcionalidades mini
 8 – Encerar
 
 ```
+
+## Arquivos de pilha e fila:
+Implementação das estruturas de pilha e fila, utilizando array`s.  
+Os programas possuem métodos de inserção, deleção, verificação se a pilha ou fila estão cheias ou vazias.
+
+
