@@ -24,7 +24,6 @@ Importante, para executar os arquivos e necessário ter o nodejs instalado na ma
 
 ```bash
 	npm install
-	npm i readline-sinc
 ```
 
 Apos a instalacao das dependencias podemos executar qualquer um dos arquivos, com os comandos:
