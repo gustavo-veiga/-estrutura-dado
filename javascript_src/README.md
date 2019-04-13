@@ -85,4 +85,7 @@ QuickSort e um método de deleção implementado.(Abaixo as funcionalidades mini
 Implementação das estruturas de pilha e fila, utilizando array`s.  
 Os programas possuem métodos de inserção, deleção, verificação se a pilha ou fila estão cheias ou vazias.
 
+### Arquivos com new
+O arquivo newpilha possui metodos unarios e binarios
+
 
