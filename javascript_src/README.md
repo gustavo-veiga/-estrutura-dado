@@ -33,6 +33,7 @@ Apos a instalacao das dependencias podemos executar qualquer um dos arquivos, co
 	node segundoTrabalho/lista_plus.js
 	node javascript_src/Pilha_Fila/pilha.js
 	node javascript_src/Pilha_Fila/fila.js
+	node javascript_src/Pilha_Fila/newpilha.js
 ```
 -----
 
