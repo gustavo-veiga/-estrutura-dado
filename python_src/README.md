@@ -25,6 +25,12 @@ python manage.py algorithms
 
 # para o código das estruturas de dados
 python manage.py structs
+
+# para o código da Tarefa 1
+python manage.py tarefa_1
+
+# para o código da Tarefa 2
+python manage.py tarefa_2
 ```
 
 ### Tests
