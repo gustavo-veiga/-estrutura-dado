@@ -52,26 +52,46 @@ function Pilha() {
 
     //Metodos para operacoes unarias e binarias na pilha
 
-    this.DEC2 = () => { return this.lista[this.topo] -= 2 } 
+    this.DEC2 = () => {
+        if(this.isEmpty()) {
+            return console.error("A pilha esta vazia!")
+        } 
+        return this.lista[this.topo] -= 2 } 
 
-    this.ADD3 = () => { return this.lista[this.topo] += 3 }
+    this.ADD3 = () => { 
+        if(this.isEmpty()) {
+            return console.error("A pilha esta vazia!")
+        } 
+        return this.lista[this.topo] += 3 }
 
     this.Soma = () => { // Soma e o mesmo do ADD das funcoes binarias
+        if(this.isEmpty()) {
+            return console.error("A pilha esta vazia!")
+        } 
         this.newTopo = this.lista[this.topo]
             this.remove()
         return this.lista[this.topo] += this.newTopo
     }
     this.SUB = () => {
+        if(this.isEmpty()) {
+            return console.error("A pilha esta vazia!")
+        } 
         this.newTopo = this.lista[this.topo]
             this.remove()
         return this.lista[this.topo] -= this.newTopo  
     }
     this.MYP = () => {
+        if(this.isEmpty()) {
+            return console.error("A pilha esta vazia!")
+        } 
         this.newTopo = this.lista[this.topo]
             this.remove()
         return this.lista[this.topo] *= this.newTopo
     }
     this.DIV = () => {
+        if(this.isEmpty()) {
+            return console.error("A pilha esta vazia!")
+        } 
         this.newTopo = this.lista[this.topo]
             this.remove()
         return this.lista[this.topo] /= this.newTopo
