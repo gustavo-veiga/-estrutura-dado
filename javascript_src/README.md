@@ -1,22 +1,29 @@
-# Readme JS
+# Hello World JS !
 
-Bem-vindo ao readme dos arquivos .JS, abaixo temos as funcionalidades e
-uma especie de controle de versão dos arquivos. Cada arquivo possui 
-um algo a mais, um plus de funcionalidades do que seu antecessor, que irão
-crescendo de acordo com o avanço da disciplina.
+Bem-vindo ao readme dos arquivos .JS, abaixo temos as funcionalidades de cada arquivo.  
+Cada arquivo possui um algo a mais, um plus de funcionalidades do que seu antecessor, que irão
+crescendo de acordo com o avanço da disciplina (Estrutura de dados).
 
 ## Estrututa de pastas e arquivos:  
 
 ```bash
 ./javascript_src  
  |
- |__primeiroTrabalho
+ |__listasLineares
  |	|
  |	|__  lista.js
- |
- |__segundoTrabalho
- |	|
+ |      |
  |	|__  lista_plus.js
+ |
+ |__Pilhas_Filas
+ |	|
+ |      |__ fila.js
+ |	|
+ |      |__ pilha.js
+ |	|
+ |      |__ tarefa1.js
+ |	|
+ |      |__ tarefa2.js
  ```
  ## Rodando os scripts (Ambiente Linux)  
  
@@ -24,14 +31,17 @@ Importante, para executar os arquivos e necessário ter o nodejs instalado na ma
 
 ```bash
 	npm install
-	npm i readline-sinc
 ```
 
-Apos os comandos podemos executar qualquer um dos arquivos, com os comandos:
+Apos a instalacao das dependencias podemos executar qualquer um dos arquivos, com os comandos:
 
 ```bash
-	node primeiroTrabalho/lista.js
-	node segundoTrabalho/lista_plus.js
+	node javascript_src/listasLineares/lista.js
+	node javascript_src/listasLineares/lista_plus.js
+	node javascript_src/Pilhas_Filas/pilha.js
+	node javascript_src/Pilhas_Filas/fila.js
+	node javascript_src/Pilhas_Filas/tarefa1.js
+	node javascript_src/Pilhas_Filas/tarefa2.js
 ```
 -----
 
@@ -78,3 +88,13 @@ QuickSort e um método de deleção implementado.(Abaixo as funcionalidades mini
 8 – Encerar
 
 ```
+
+## Arquivos de pilha e fila:
+Implementação das estruturas de pilha e fila, utilizando array`s.  
+Os programas possuem métodos de inserção, deleção, verificação se a pilha ou fila estão cheias ou vazias.  
+
+Os arquivos tarefa1.js e tarefa2.js foram propostos para reposição de aulas.
+Os mesmos possuem métodos dos mais variados.
+
+
+
