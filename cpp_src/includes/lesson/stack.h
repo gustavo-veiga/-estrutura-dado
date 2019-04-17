@@ -4,19 +4,37 @@
 namespace lesson {
 class stack {
  private:
-  int topo;
-  int size;
+  int top_type;
+  int size_type;
   int* data;
   void alloc(int size);
   void realloc(int size);
  public:
   stack(int size);
   ~stack();
+
+  // Element Access
   int top();
+
+  // Modifiers
   int pop();
-  void push(int e);
-  bool is_empty();
-  bool is_full();
+  void push(int element);
+  void swap(int left, int right);
+
+  // Capacity
+  int size();
+  bool full();
+  bool empty();
+
+  // Unary Operations
+  void dec2();
+  void add3();
+
+  // Binary Operations
+  void add();
+  void sub();
+  void mpy();
+  void div();
 };
 }  // namespace lesson
 
