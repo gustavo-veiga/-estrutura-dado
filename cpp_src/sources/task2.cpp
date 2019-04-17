@@ -40,7 +40,7 @@ int main() {
   }
 
   std::cout << std::endl;
-  std::cout << "Pressione ENTER para finalizar a programa... ";
+  std::cout << "Pressione ENTER para finalizar o programa... ";
   std::cin.get();
 
   return EXIT_SUCCESS;
