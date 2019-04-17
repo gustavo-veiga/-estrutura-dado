@@ -13,7 +13,7 @@ int main() {
   int choise = 0;
   while (true) {
     std::cout << "1 - Exibir pilha (Limpa a Pilha)" << std::endl;
-    std::cout << "2 - Adicionar um elemento" << std::endl;
+    std::cout << "2 - Adicionar um elemento ao topo" << std::endl;
     std::cout << "3 - Remover o elemento do topo" << std::endl;
     std::cout << "4 - Operacoes Unarias" << std::endl;
     std::cout << "5 - Operacoes Binarias" << std::endl;
