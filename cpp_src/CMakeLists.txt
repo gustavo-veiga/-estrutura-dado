@@ -16,4 +16,5 @@ include_directories(includes)
 
 add_executable(binary ${SOURCES}/main.cpp ${HEADERS})
 add_executable(task1 ${SOURCES}/task1.cpp ${HEADERS})
+add_executable(task2 ${SOURCES}/task2.cpp ${HEADERS})
 #add_executable(benchmark_sort ${BENCHMARKS}/benchmark_sort.cpp ${HEADERS})
