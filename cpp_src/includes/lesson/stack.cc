@@ -76,12 +76,12 @@ int lesson::stack::size() {
   return size_type;
 }
 
-bool lesson::stack::empty() {
-  return (top_type == -1);
-}
-
 bool lesson::stack::full() {
   return (top_type == size_type - 1);
+}
+
+bool lesson::stack::empty() {
+  return (top_type == -1);
 }
 
 // Unary Operations
