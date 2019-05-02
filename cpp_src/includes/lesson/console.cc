@@ -22,7 +22,7 @@ int lesson::console::columns() {
 
 #elif __linux__
 
-int lesson::console::row() {
+int lesson::console::rows() {
   struct winsize size;
   ioctl(STDOUT_FILENO, TIOCGWINSZ, &size);
   return size.ws_row;
