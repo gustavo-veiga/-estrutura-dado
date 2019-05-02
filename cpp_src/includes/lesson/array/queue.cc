@@ -2,11 +2,13 @@
 #include <cstdlib>
 #include <stdexcept>
 
+namespace lesson {
+namespace array {
 /*
  * Constructor
  */
 
-lesson::queue::queue(int size) {
+queue::queue(int size) {
   first_type = 0;
   last_type = 0;
   total_type = 0;
@@ -18,7 +20,7 @@ lesson::queue::queue(int size) {
  * Destructor
  */
 
-lesson::queue::~queue() {
+queue::~queue() {
   std::free(data);
 }
 
@@ -28,17 +30,17 @@ lesson::queue::~queue() {
 
 // Element Access
 
-int lesson::queue::back() {
+int queue::back() {
   return data[last_type];
 }
 
-int lesson::queue::front() {
+int queue::front() {
   return data[first_type];
 }
 
 // Modifiers
 
-int lesson::queue::pop() {
+int queue::pop() {
   if (empty()) {
     throw std::runtime_error("Fila Vazia");
   }
@@ -48,7 +50,7 @@ int lesson::queue::pop() {
   return element;
 }
 
-void lesson::queue::push(int element) {
+void queue::push(int element) {
   if (full()) {
     throw std::runtime_error("Fila Cheia");
   }
@@ -57,7 +59,7 @@ void lesson::queue::push(int element) {
   total_type++;
 }
 
-void lesson::queue::swap(int left, int right) {
+void queue::swap(int left, int right) {
   if (left < size_type && right < size_type) {
     std::swap(data[left], data[right]);
   }
@@ -65,14 +67,16 @@ void lesson::queue::swap(int left, int right) {
 
 // Capacity
 
-int lesson::queue::size() {
+int queue::size() {
   return size_type;
 }
 
-bool lesson::queue::full() {
+bool queue::full() {
   return total_type == size_type;
 }
 
-bool lesson::queue::empty() {
+bool queue::empty() {
   return total_type == 0;
 }
+}  // namespace array
+}  // namespace lesson

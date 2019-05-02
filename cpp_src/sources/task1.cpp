@@ -1,5 +1,5 @@
 #include <lesson/console.h>
-#include <lesson/stack.h>
+#include <lesson/array/stack.h>
 #include <iostream>
 
 int main() {
@@ -8,7 +8,7 @@ int main() {
   std::cout << "Insira o tamanho da pilha: ";
   std::cin >> size;
 
-  auto stack = lesson::stack(size);
+  auto stack = lesson::array::stack(size);
 
   int choise = 0;
   while (true) {

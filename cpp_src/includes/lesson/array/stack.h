@@ -2,6 +2,7 @@
 #define STACK_H_
 
 namespace lesson {
+namespace array {
 class stack {
  private:
   int top_type;
@@ -9,6 +10,7 @@ class stack {
   int* data;
   void alloc(int size);
   void realloc(int size);
+
  public:
   stack(int size);
   ~stack();
@@ -36,6 +38,7 @@ class stack {
   void mpy();
   void div();
 };
+}  // namespace array
 }  // namespace lesson
 
 #endif

@@ -2,6 +2,7 @@
 #define QUEUE_H_
 
 namespace lesson {
+namespace array {
 class queue {
  private:
   int *data;
@@ -9,6 +10,7 @@ class queue {
   int first_type;
   int last_type;
   int total_type;
+
  public:
   queue(int size);
   ~queue();
@@ -27,6 +29,7 @@ class queue {
   bool full();
   bool empty();
 };
+}  // namespace array
 }  // namespace lesson
 
 #endif

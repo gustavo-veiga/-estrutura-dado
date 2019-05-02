@@ -2,6 +2,7 @@
 #define LESSON_VECTOR_H_
 
 namespace lesson {
+namespace array {
 class vector {
  private:
   int *data;
@@ -22,6 +23,7 @@ class vector {
   void swap(int left, int right);
   void remove(int index);
 };
+}  // namespace array
 }  // namespace lesson
 
 #endif

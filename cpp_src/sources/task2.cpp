@@ -1,11 +1,11 @@
-#include <lesson/queue.h>
-#include <lesson/stack.h>
-#include <lesson/vector.h>
+#include <lesson/array/queue.h>
+#include <lesson/array/stack.h>
+#include <lesson/array/vector.h>
 #include <iostream>
 
 int main() {
   // Fila
-  auto fila = lesson::queue(10);
+  auto fila = lesson::array::queue(10);
   fila.push(234);
   fila.push(646);
   fila.push(195);
@@ -14,7 +14,7 @@ int main() {
   fila.push(246);
 
   // Pilha
-  auto pilha = lesson::stack(10);
+  auto pilha = lesson::array::stack(10);
   pilha.push(11);
   pilha.push(56);
   pilha.push(96);
@@ -25,7 +25,7 @@ int main() {
   pilha.push(26);
 
   // Vector
-  auto vetor = lesson::vector(20);
+  auto vetor = lesson::array::vector(20);
   while (!fila.empty() || !pilha.empty()) {
     if (!fila.empty()) {
       vetor.add(fila.pop());

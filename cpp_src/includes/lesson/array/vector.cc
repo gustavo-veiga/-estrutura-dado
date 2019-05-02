@@ -2,16 +2,18 @@
 #include <cstdlib>
 #include <utility>
 
+namespace lesson {
+namespace array {
 /*
  * Private Methods
  */
 
-void lesson::vector::alloc(int size) {
+void vector::alloc(int size) {
   this->size = size;
   this->data = static_cast<int *>(std::malloc(this->size * sizeof(int)));
 }
 
-void lesson::vector::realloc(int size) {
+void vector::realloc(int size) {
   this->size = size;
   this->data = static_cast<int *>(std::realloc(this->data, this->size * sizeof(int)));
 }
@@ -20,7 +22,7 @@ void lesson::vector::realloc(int size) {
  * Constructors
  */
 
-lesson::vector::vector(int size) {
+vector::vector(int size) {
   this->alloc(size);
 }
 
@@ -28,7 +30,7 @@ lesson::vector::vector(int size) {
  * Destructors
  */
 
-lesson::vector::~vector() {
+vector::~vector() {
   std::free(this->data);
 }
 
@@ -36,7 +38,7 @@ lesson::vector::~vector() {
  * Public Methods
  */
 
-void lesson::vector::add(int element) {
+void vector::add(int element) {
   if (this->size == 0) {
     this->alloc(10);
   } else if (this->size == this->count) {
@@ -47,21 +49,21 @@ void lesson::vector::add(int element) {
   this->count++;
 }
 
-void lesson::vector::set(int index, int element) {
+void vector::set(int index, int element) {
   if (index < this->count) {
     this->data[index] = element;
     this->is_sorted = false;
   }
 }
 
-int lesson::vector::get(int index) {
+int vector::get(int index) {
   if (index < this->count) {
     return this->data[index];
   }
   return NULL;
 }
 
-void lesson::vector::remove(int index) {
+void vector::remove(int index) {
   if (index < this->count) {
     this->swap(index, this->end());
     this->data[this->end()] = NULL;
@@ -70,17 +72,19 @@ void lesson::vector::remove(int index) {
   }
 }
 
-void lesson::vector::swap(int left, int right) {
+void vector::swap(int left, int right) {
   if (left < this->count && right < this->count) {
     std::swap(this->data[left], this->data[right]);
     this->is_sorted = false;
   }
 }
 
-int lesson::vector::end() {
+int vector::end() {
   return this->count - 1;
 }
 
-int lesson::vector::capacity() {
+int vector::capacity() {
   return this->size;
 }
+}  // namespace array
+}  // namespace lesson

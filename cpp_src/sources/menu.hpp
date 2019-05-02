@@ -2,7 +2,7 @@
 #include <lesson/console.h>
 #include <lesson/search.h>
 #include <lesson/sort.h>
-#include <lesson/vector.h>
+#include <lesson/array/vector.h>
 #include <iostream>
 
 namespace menu {
@@ -24,7 +24,7 @@ int show() {
   return choise;
 }
 
-void show_all(lesson::vector &vec) {
+void show_all(lesson::array::vector &vec) {
   std::cout << "{ ";
   for (int i = 0; i <= vec.end(); i++) {
     std::cout << vec.get(i) << " ";
@@ -32,7 +32,7 @@ void show_all(lesson::vector &vec) {
   std::cout << "}" << std::endl;
 }
 
-void linear_search(lesson::vector &vec) {
+void linear_search(lesson::array::vector &vec) {
   int search;
   std::cout << "Insira o elemento a ser buscado: ";
   std::cin >> search;
@@ -44,7 +44,7 @@ void linear_search(lesson::vector &vec) {
   }
 }
 
-void binary_search(lesson::vector &vec) {
+void binary_search(lesson::array::vector &vec) {
   int search;
   int result;
   std::cout << "Insira o elemento a ser buscado: ";
@@ -60,7 +60,7 @@ void binary_search(lesson::vector &vec) {
   }
 }
 
-void bubble_sort(lesson::vector &vec) {
+void bubble_sort(lesson::array::vector &vec) {
   double time = lesson::chrono::duration([&vec]() {
     lesson::sort::bubble(vec);
   });
@@ -69,7 +69,7 @@ void bubble_sort(lesson::vector &vec) {
   show_all(vec);
 }
 
-void quick_sort(lesson::vector &vec) {
+void quick_sort(lesson::array::vector &vec) {
   double time = lesson::chrono::duration([&vec]() {
     lesson::sort::quick(vec);
   });
@@ -78,7 +78,7 @@ void quick_sort(lesson::vector &vec) {
   show_all(vec);
 }
 
-void remove_element(lesson::vector &vec) {
+void remove_element(lesson::array::vector &vec) {
   int index;
   std::cout << "Insira o indice do elemento a ser removido: ";
   std::cin >> index;

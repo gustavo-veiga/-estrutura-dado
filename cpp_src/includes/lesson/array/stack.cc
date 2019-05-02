@@ -2,16 +2,18 @@
 #include <cstdlib>
 #include <stdexcept>
 
+namespace lesson {
+namespace array {
 /*
  * Private Methods
  */
 
-void lesson::stack::alloc(int size) {
+void stack::alloc(int size) {
   size_type = size;
   data = static_cast<int *>(std::malloc(size_type * sizeof(int)));
 }
 
-void lesson::stack::realloc(int size) {
+void stack::realloc(int size) {
   size_type = size;
   data = static_cast<int *>(std::realloc(data, size_type * sizeof(int)));
 }
@@ -20,7 +22,7 @@ void lesson::stack::realloc(int size) {
  * Constructor
  */
 
-lesson::stack::stack(int size) {
+stack::stack(int size) {
   top_type = -1;
   size_type = size;
   alloc(size_type);
@@ -30,7 +32,7 @@ lesson::stack::stack(int size) {
  * Destructor
  */
 
-lesson::stack::~stack() {
+stack::~stack() {
   std::free(data);
 }
 
@@ -40,7 +42,7 @@ lesson::stack::~stack() {
 
 // Element Access
 
-int lesson::stack::top() {
+int stack::top() {
   if (empty()) {
     throw std::runtime_error("Pilha Vazia");
   }
@@ -49,7 +51,7 @@ int lesson::stack::top() {
 
 // Modifiers
 
-int lesson::stack::pop() {
+int stack::pop() {
   if (empty()) {
     throw std::runtime_error("Pilha Vazia");
   }
@@ -58,7 +60,7 @@ int lesson::stack::pop() {
   return element;
 }
 
-void lesson::stack::push(int element) {
+void stack::push(int element) {
   if (full()) {
     realloc(size_type * 2);
   }
@@ -66,33 +68,33 @@ void lesson::stack::push(int element) {
   data[top_type] = element;
 }
 
-void lesson::stack::swap(int left, int right) {
+void stack::swap(int left, int right) {
   std::swap(data[left], data[right]);
 }
 
 // Capacity
 
-int lesson::stack::size() {
+int stack::size() {
   return size_type;
 }
 
-bool lesson::stack::full() {
+bool stack::full() {
   return (top_type == size_type - 1);
 }
 
-bool lesson::stack::empty() {
+bool stack::empty() {
   return (top_type == -1);
 }
 
 // Unary Operations
 
-void lesson::stack::dec2() {
+void stack::dec2() {
   int top = pop();
   top -= 2;
   push(top);
 }
 
-void lesson::stack::add3() {
+void stack::add3() {
   int top = pop();
   top += 3;
   push(top);
@@ -100,7 +102,7 @@ void lesson::stack::add3() {
 
 // Binary Operations
 
-void lesson::stack::add() {
+void stack::add() {
   if (top_type < 2) {
     throw std::runtime_error(
         "Necessario no minino 2 elementos na pilha para executar essa operacao");
@@ -110,7 +112,7 @@ void lesson::stack::add() {
   push(x + y);
 }
 
-void lesson::stack::sub() {
+void stack::sub() {
   if (top_type < 2) {
     throw std::runtime_error(
         "Necessario no minino 2 elementos na pilha para executar essa operacao");
@@ -120,7 +122,7 @@ void lesson::stack::sub() {
   push(x - y);
 }
 
-void lesson::stack::mpy() {
+void stack::mpy() {
   if (top_type < 2) {
     throw std::runtime_error(
         "Necessario no minino 2 elementos na pilha para executar essa operacao");
@@ -130,7 +132,7 @@ void lesson::stack::mpy() {
   push(x * y);
 }
 
-void lesson::stack::div() {
+void stack::div() {
   if (top_type < 2) {
     throw std::runtime_error(
         "Necessario no minino 2 elementos na pilha para executar essa operacao");
@@ -139,3 +141,5 @@ void lesson::stack::div() {
   int y = pop();
   push(x / y);
 }
+}  // namespace array
+}  // namespace lesson
