@@ -7,27 +7,28 @@ namespace array {
 template <typename T>
 class vector {
  private:
-  T *data;
-  size_t size = 0;
-  size_t count = 0;
+  T* data;
+  size_t size_value = 0;
+  size_t count_value = 0;
   void alloc(size_t size);
   void realloc(size_t size);
 
  public:
+  vector();
   vector(size_t size);
   ~vector();
 
   // Element Access
-  T get(size_t index);
+  T& operator[](size_t index);
 
   // Modifiers
-  void add(T element);
-  void set(size_t index, T element);
+  void push(T element);
   void swap(size_t left, size_t right);
   void remove(size_t index);
 
   // Capacity
   size_t end();
+  size_t size();
   size_t capacity();
 
   // Extras

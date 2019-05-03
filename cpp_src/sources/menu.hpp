@@ -27,7 +27,7 @@ int show() {
 void show_all(lesson::array::vector<int> &vec) {
   std::cout << "{ ";
   for (int i = 0; i <= vec.end(); i++) {
-    std::cout << vec.get(i) << " ";
+    std::cout << vec[i] << " ";
   }
   std::cout << "}" << std::endl;
 }

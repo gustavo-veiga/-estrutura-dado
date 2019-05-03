@@ -3,7 +3,7 @@
 
 int lesson::search::linear(lesson::array::vector<int>& vec, int element) {
   for (int i = 0; i <= vec.end(); i++) {
-    if (vec.get(i) == element) {
+    if (vec[i] == element) {
       return i;
     }
   }
@@ -15,9 +15,9 @@ int lesson::search::binary(lesson::array::vector<int>& vec, int element) {
   int upper_limit = vec.end();
   while (lower_limit <= upper_limit) {
     int middle = (lower_limit + upper_limit) / 2;
-    if (vec.get(middle) == element) {
+    if (vec[middle] == element) {
       return middle;
-    } else if (vec.get(middle) > element) {
+    } else if (vec[middle] > element) {
       upper_limit = middle - 1;
     } else {
       lower_limit = middle + 1;

@@ -4,7 +4,7 @@
 void lesson::sort::bubble(lesson::array::vector<int>& vec) {
   for (int i = 0; i < vec.end(); i++) {
     for (int j = 0; j < vec.end() - i; j++) {
-      if (vec.get(j) > vec.get(j + 1)) {
+      if (vec[j] > vec[j + 1]) {
         vec.swap(j, j + 1);
       }
     }
@@ -20,15 +20,15 @@ void lesson::sort::quick(lesson::array::vector<int>& vec) {
 void lesson::sort::quick(lesson::array::vector<int>& vec, int left, int right) {
   int tmp;
   int i = left, j = right;
-  int pivot = vec.get((left + right) / 2);
+  int pivot = vec[(left + right) / 2];
 
   while (i <= j) {
-    while (vec.get(i) < pivot) i++;
-    while (vec.get(j) > pivot) j--;
+    while (vec[i] < pivot) i++;
+    while (vec[j] > pivot) j--;
     if (i <= j) {
-      tmp = vec.get(i);
-      vec.set(i, vec.get(j));
-      vec.set(j, tmp);
+      tmp = vec[i];
+      vec[i] = vec[j];
+      vec[j] = tmp;
       i++;
       j--;
     }

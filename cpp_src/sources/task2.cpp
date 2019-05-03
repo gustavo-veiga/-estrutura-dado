@@ -28,15 +28,15 @@ int main() {
   auto vetor = lesson::array::vector<int>(20);
   while (!fila.empty() || !pilha.empty()) {
     if (!fila.empty()) {
-      vetor.add(fila.pop());
+      vetor.push(fila.pop());
     }
     if (!pilha.empty()) {
-      vetor.add(pilha.pop());
+      vetor.push(pilha.pop());
     }
   }
 
   for (int i = 0; i < vetor.end(); i++) {
-    std::cout << vetor.get(i) << " ";
+    std::cout << vetor[i] << " ";
   }
 
   std::cout << std::endl;

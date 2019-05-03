@@ -21,7 +21,7 @@ int main() {
   std::uniform_int_distribution<> dis(min_value, max_value);
 
   for (int i = 0; i < size; i++) {
-    elements.add(dis(gen));
+    elements.push(dis(gen));
   }
 
   while (true) {
