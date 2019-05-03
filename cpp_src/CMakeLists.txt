@@ -10,7 +10,7 @@ set(SOURCES ${PROJECT_SOURCE_DIR}/sources)
 set(BENCHMARKS ${PROJECT_SOURCE_DIR}/benchmarks)
 
 # Headers
-file(GLOB HEADERS "includes/lesson/*")
+file(GLOB_RECURSE HEADERS "includes/lesson/*")
 
 include_directories(includes)
 

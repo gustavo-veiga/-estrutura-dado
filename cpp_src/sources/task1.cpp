@@ -8,7 +8,7 @@ int main() {
   std::cout << "Insira o tamanho da pilha: ";
   std::cin >> size;
 
-  auto stack = lesson::array::stack(size);
+  auto stack = lesson::array::stack<int>(size);
 
   int choise = 0;
   while (true) {

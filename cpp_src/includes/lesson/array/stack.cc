@@ -8,32 +8,36 @@ namespace array {
  * Private Methods
  */
 
-void stack::alloc(int size) {
-  size_type = size;
-  data = static_cast<int *>(std::malloc(size_type * sizeof(int)));
+template <typename T>
+void stack<T>::alloc(size_t size) {
+  this->size_value = size;
+  this->data = static_cast<T *>(std::malloc(this->size_value * sizeof(T)));
 }
 
-void stack::realloc(int size) {
-  size_type = size;
-  data = static_cast<int *>(std::realloc(data, size_type * sizeof(int)));
+template <typename T>
+void stack<T>::realloc(size_t size) {
+  this->size_value = size;
+  this->data = static_cast<T *>(std::realloc(this->data, this->size_value * sizeof(T)));
 }
 
 /*
  * Constructor
  */
 
-stack::stack(int size) {
-  top_type = -1;
-  size_type = size;
-  alloc(size_type);
+template <typename T>
+stack<T>::stack(size_t size) {
+  this->top_value = -1;
+  this->size_value = size;
+  alloc(this->size_value);
 }
 
 /*
  * Destructor
  */
 
-stack::~stack() {
-  std::free(data);
+template <typename T>
+stack<T>::~stack() {
+  std::free(this->data);
 }
 
 /*
@@ -42,59 +46,68 @@ stack::~stack() {
 
 // Element Access
 
-int stack::top() {
-  if (empty()) {
+template <typename T>
+T stack<T>::top() {
+  if (this->empty()) {
     throw std::runtime_error("Pilha Vazia");
   }
-  return data[top_type];
+  return this->data[this->top_value];
 }
 
 // Modifiers
 
-int stack::pop() {
-  if (empty()) {
+template <typename T>
+T stack<T>::pop() {
+  if (this->empty()) {
     throw std::runtime_error("Pilha Vazia");
   }
-  int element = data[top_type];
-  top_type--;
+  T element = this->data[this->top_value];
+  this->top_value--;
   return element;
 }
 
-void stack::push(int element) {
-  if (full()) {
-    realloc(size_type * 2);
+template <typename T>
+void stack<T>::push(T element) {
+  if (this->full()) {
+    this->realloc(this->size_value * 2);
   }
-  top_type++;
-  data[top_type] = element;
+  this->top_value++;
+  this->data[this->top_value] = element;
 }
 
-void stack::swap(int left, int right) {
-  std::swap(data[left], data[right]);
+template <typename T>
+void stack<T>::swap(size_t left, size_t right) {
+  std::swap(this->data[left], this->data[right]);
 }
 
 // Capacity
 
-int stack::size() {
-  return size_type;
+template <typename T>
+bool stack<T>::full() {
+  return (this->top_value == this->size_value - 1);
 }
 
-bool stack::full() {
-  return (top_type == size_type - 1);
+template <typename T>
+bool stack<T>::empty() {
+  return (this->top_value == -1);
 }
 
-bool stack::empty() {
-  return (top_type == -1);
+template <typename T>
+size_t stack<T>::size() {
+  return this->size_value;
 }
 
 // Unary Operations
 
-void stack::dec2() {
+template <typename T>
+void stack<T>::dec2() {
   int top = pop();
   top -= 2;
   push(top);
 }
 
-void stack::add3() {
+template <typename T>
+void stack<T>::add3() {
   int top = pop();
   top += 3;
   push(top);
@@ -102,44 +115,50 @@ void stack::add3() {
 
 // Binary Operations
 
-void stack::add() {
-  if (top_type < 2) {
+template <typename T>
+void stack<T>::add() {
+  if (this->top() < 2) {
     throw std::runtime_error(
         "Necessario no minino 2 elementos na pilha para executar essa operacao");
   }
-  int x = pop();
-  int y = pop();
-  push(x + y);
+  int x = this->pop();
+  int y = this->pop();
+  this->push(x + y);
 }
 
-void stack::sub() {
-  if (top_type < 2) {
+template <typename T>
+void stack<T>::sub() {
+  if (this->top() < 2) {
     throw std::runtime_error(
         "Necessario no minino 2 elementos na pilha para executar essa operacao");
   }
-  int x = pop();
-  int y = pop();
-  push(x - y);
+  int x = this->pop();
+  int y = this->pop();
+  this->push(x - y);
 }
 
-void stack::mpy() {
-  if (top_type < 2) {
+template <typename T>
+void stack<T>::mpy() {
+  if (this->top() < 2) {
     throw std::runtime_error(
         "Necessario no minino 2 elementos na pilha para executar essa operacao");
   }
-  int x = pop();
-  int y = pop();
-  push(x * y);
+  int x = this->pop();
+  int y = this->pop();
+  this->push(x * y);
 }
 
-void stack::div() {
-  if (top_type < 2) {
+template <typename T>
+void stack<T>::div() {
+  if (this->top() < 2) {
     throw std::runtime_error(
         "Necessario no minino 2 elementos na pilha para executar essa operacao");
   }
-  int x = pop();
-  int y = pop();
-  push(x / y);
+  int x = this->pop();
+  int y = this->pop();
+  this->push(x / y);
 }
 }  // namespace array
 }  // namespace lesson
+
+template class lesson::array::stack<int>;

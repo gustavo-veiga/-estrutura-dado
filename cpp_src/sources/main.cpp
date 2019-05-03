@@ -4,7 +4,7 @@
 #include "menu.hpp"
 
 int main() {
-  int size = 0;
+  size_t size = 0;
   int min_value = 0;
   int max_value = 0;
 
@@ -15,7 +15,7 @@ int main() {
   std::cout << "Insira o maior valor: ";
   std::cin >> max_value;
 
-  auto elements = lesson::array::vector(size);
+  auto elements = lesson::array::vector<int>(size);
   std::random_device rd;
   std::mt19937 gen(rd());
   std::uniform_int_distribution<> dis(min_value, max_value);

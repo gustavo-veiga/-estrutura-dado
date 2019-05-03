@@ -5,11 +5,11 @@
 namespace lesson {
 class sort {
  private:
-  static void quick(lesson::array::vector& vec, int left, int right);
+  static void quick(lesson::array::vector<int>& vec, int left, int right);
 
  public:
-  static void quick(lesson::array::vector& vec);
-  static void bubble(lesson::array::vector& vec);
+  static void quick(lesson::array::vector<int>& vec);
+  static void bubble(lesson::array::vector<int>& vec);
 };
 }  // namespace lesson
 

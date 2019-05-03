@@ -1,7 +1,7 @@
 #include "search.h"
-#include "vector.h"
+#include "array/vector.h"
 
-int lesson::search::linear(lesson::vector& vec, int element) {
+int lesson::search::linear(lesson::array::vector<int>& vec, int element) {
   for (int i = 0; i <= vec.end(); i++) {
     if (vec.get(i) == element) {
       return i;
@@ -10,7 +10,7 @@ int lesson::search::linear(lesson::vector& vec, int element) {
   return -1;
 }
 
-int lesson::search::binary(lesson::vector& vec, int element) {
+int lesson::search::binary(lesson::array::vector<int>& vec, int element) {
   int lower_limit = 0;
   int upper_limit = vec.end();
   while (lower_limit <= upper_limit) {

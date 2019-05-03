@@ -1,33 +1,35 @@
 #ifndef QUEUE_H_
 #define QUEUE_H_
+#include <cstdlib>
 
 namespace lesson {
 namespace array {
+template <typename T>
 class queue {
  private:
-  int *data;
-  int size_type;
-  int first_type;
-  int last_type;
-  int total_type;
+  T *data;
+  size_t size_value;
+  size_t first_value;
+  size_t last_value;
+  size_t total_value;
 
  public:
-  queue(int size);
+  queue(size_t size);
   ~queue();
 
   // Element Access
-  int back();
-  int front();
+  T back();
+  T front();
 
   // Modifiers
-  int pop();
-  void push(int element);
-  void swap(int left, int right);
+  T pop();
+  void push(T element);
+  void swap(size_t left, size_t right);
 
   // Capacity
-  int size();
   bool full();
   bool empty();
+  size_t size();
 };
 }  // namespace array
 }  // namespace lesson

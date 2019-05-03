@@ -1,7 +1,7 @@
 #include "sort.h"
-#include "vector.h"
+#include "array/vector.h"
 
-void lesson::sort::bubble(lesson::vector& vec) {
+void lesson::sort::bubble(lesson::array::vector<int>& vec) {
   for (int i = 0; i < vec.end(); i++) {
     for (int j = 0; j < vec.end() - i; j++) {
       if (vec.get(j) > vec.get(j + 1)) {
@@ -12,12 +12,12 @@ void lesson::sort::bubble(lesson::vector& vec) {
   vec.is_sorted = true;
 }
 
-void lesson::sort::quick(lesson::vector& vec) {
+void lesson::sort::quick(lesson::array::vector<int>& vec) {
   lesson::sort::quick(vec, 0, vec.end());
   vec.is_sorted = true;
 }
 
-void lesson::sort::quick(lesson::vector& vec, int left, int right) {
+void lesson::sort::quick(lesson::array::vector<int>& vec, int left, int right) {
   int tmp;
   int i = left, j = right;
   int pivot = vec.get((left + right) / 2);

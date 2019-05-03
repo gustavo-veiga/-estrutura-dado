@@ -8,20 +8,22 @@ namespace array {
  * Constructor
  */
 
-queue::queue(int size) {
-  first_type = 0;
-  last_type = 0;
-  total_type = 0;
-  size_type = size;
-  data = static_cast<int *>(std::malloc(size_type * sizeof(int)));
+template <typename T>
+queue<T>::queue(size_t size) {
+  this->first_value = 0;
+  this->last_value = 0;
+  this->total_value = 0;
+  this->size_value = size;
+  this->data = static_cast<T *>(std::malloc(this->size_value * sizeof(T)));
 }
 
 /*
  * Destructor
  */
 
-queue::~queue() {
-  std::free(data);
+template <typename T>
+queue<T>::~queue() {
+  std::free(this->data);
 }
 
 /*
@@ -30,53 +32,63 @@ queue::~queue() {
 
 // Element Access
 
-int queue::back() {
-  return data[last_type];
+template <typename T>
+T queue<T>::back() {
+  return this->data[this->last_value];
 }
 
-int queue::front() {
-  return data[first_type];
+template <typename T>
+T queue<T>::front() {
+  return this->data[this->first_value];
 }
 
 // Modifiers
 
-int queue::pop() {
+template <typename T>
+T queue<T>::pop() {
   if (empty()) {
     throw std::runtime_error("Fila Vazia");
   }
-  int element = data[first_type];
-  first_type = (first_type + 1) % size_type;
-  total_type--;
+  int element = this->data[this->first_value];
+  this->first_value = (this->first_value + 1) % this->size_value;
+  this->total_value--;
   return element;
 }
 
-void queue::push(int element) {
+template <typename T>
+void queue<T>::push(T element) {
   if (full()) {
     throw std::runtime_error("Fila Cheia");
   }
-  data[last_type] = element;
-  last_type = (last_type + 1) % size_type;
-  total_type++;
+  this->data[this->last_value] = element;
+  this->last_value = (this->last_value + 1) % this->size_value;
+  this->total_value++;
 }
 
-void queue::swap(int left, int right) {
-  if (left < size_type && right < size_type) {
-    std::swap(data[left], data[right]);
+template <typename T>
+void queue<T>::swap(size_t left, size_t right) {
+  if (left < this->size_value && right < this->size_value) {
+    std::swap(this->data[left], this->data[right]);
   }
 }
 
 // Capacity
 
-int queue::size() {
-  return size_type;
+template <typename T>
+bool queue<T>::full() {
+  return this->total_value == this->size_value;
 }
 
-bool queue::full() {
-  return total_type == size_type;
+template <typename T>
+bool queue<T>::empty() {
+  return this->total_value == 0;
 }
 
-bool queue::empty() {
-  return total_type == 0;
+template <typename T>
+size_t queue<T>::size() {
+  return this->size_value;
 }
 }  // namespace array
 }  // namespace lesson
+
+template class lesson::array::queue<int>;

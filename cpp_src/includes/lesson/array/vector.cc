@@ -8,21 +8,24 @@ namespace array {
  * Private Methods
  */
 
-void vector::alloc(int size) {
+template <typename T>
+void vector<T>::alloc(size_t size) {
   this->size = size;
-  this->data = static_cast<int *>(std::malloc(this->size * sizeof(int)));
+  this->data = static_cast<T *>(std::malloc(this->size * sizeof(T)));
 }
 
-void vector::realloc(int size) {
+template <typename T>
+void vector<T>::realloc(size_t size) {
   this->size = size;
-  this->data = static_cast<int *>(std::realloc(this->data, this->size * sizeof(int)));
+  this->data = static_cast<T *>(std::realloc(this->data, this->size * sizeof(T)));
 }
 
 /*
  * Constructors
  */
 
-vector::vector(int size) {
+template <typename T>
+vector<T>::vector(size_t size) {
   this->alloc(size);
 }
 
@@ -30,7 +33,8 @@ vector::vector(int size) {
  * Destructors
  */
 
-vector::~vector() {
+template <typename T>
+vector<T>::~vector() {
   std::free(this->data);
 }
 
@@ -38,7 +42,8 @@ vector::~vector() {
  * Public Methods
  */
 
-void vector::add(int element) {
+template <typename T>
+void vector<T>::add(T element) {
   if (this->size == 0) {
     this->alloc(10);
   } else if (this->size == this->count) {
@@ -49,21 +54,24 @@ void vector::add(int element) {
   this->count++;
 }
 
-void vector::set(int index, int element) {
+template <typename T>
+void vector<T>::set(size_t index, T element) {
   if (index < this->count) {
     this->data[index] = element;
     this->is_sorted = false;
   }
 }
 
-int vector::get(int index) {
+template <typename T>
+T vector<T>::get(size_t index) {
   if (index < this->count) {
     return this->data[index];
   }
   return NULL;
 }
 
-void vector::remove(int index) {
+template <typename T>
+void vector<T>::remove(size_t index) {
   if (index < this->count) {
     this->swap(index, this->end());
     this->data[this->end()] = NULL;
@@ -72,19 +80,24 @@ void vector::remove(int index) {
   }
 }
 
-void vector::swap(int left, int right) {
+template <typename T>
+void vector<T>::swap(size_t left, size_t right) {
   if (left < this->count && right < this->count) {
     std::swap(this->data[left], this->data[right]);
     this->is_sorted = false;
   }
 }
 
-int vector::end() {
+template <typename T>
+size_t vector<T>::end() {
   return this->count - 1;
 }
 
-int vector::capacity() {
+template <typename T>
+size_t vector<T>::capacity() {
   return this->size;
 }
 }  // namespace array
 }  // namespace lesson
+
+template class lesson::array::vector<int>;

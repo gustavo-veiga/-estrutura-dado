@@ -1,32 +1,34 @@
 #ifndef STACK_H_
 #define STACK_H_
+#include <cstdlib>
 
 namespace lesson {
 namespace array {
+template <typename T>
 class stack {
  private:
-  int top_type;
-  int size_type;
-  int* data;
-  void alloc(int size);
-  void realloc(int size);
+  T* data;
+  size_t top_value;
+  size_t size_value;
+  void alloc(size_t size);
+  void realloc(size_t size);
 
  public:
-  stack(int size);
+  stack(size_t size);
   ~stack();
 
   // Element Access
-  int top();
+  T top();
 
   // Modifiers
-  int pop();
-  void push(int element);
-  void swap(int left, int right);
+  T pop();
+  void push(T element);
+  void swap(size_t left, size_t right);
 
   // Capacity
-  int size();
   bool full();
   bool empty();
+  size_t size();
 
   // Unary Operations
   void dec2();

@@ -4,8 +4,8 @@
 
 namespace lesson {
 struct search {
-  static int linear(lesson::array::vector &vec, int element);
-  static int binary(lesson::array::vector &vec, int element);
+  static int linear(lesson::array::vector<int> &vec, int element);
+  static int binary(lesson::array::vector<int> &vec, int element);
 };
 }  // namespace lesson
 
