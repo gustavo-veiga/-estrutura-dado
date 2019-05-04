@@ -22,15 +22,15 @@ list<T>::list() {
 
 template <typename T>
 T list<T>::front() {
-  return this->ptr_front->value();
+  return this->ptr_front->element;
 }
 
 template <typename T>
 void list<T>::show() {
   auto aux = this->ptr_front;
   while (aux != nullptr) {
-    std::cout << aux->value() << std::endl;
-    aux = aux->next();
+    std::cout << aux->element << std::endl;
+    aux = aux->next;
   }
 }
 
@@ -38,10 +38,10 @@ template <typename T>
 node<T>* list<T>::search(T element) {
   auto aux = this->ptr_front;
   while (aux != nullptr) {
-    if (aux->value() == element) {
+    if (aux->element == element) {
       return aux;
     }
-    aux = aux->next();
+    aux = aux->next;
   }
   return nullptr;
 }
@@ -52,18 +52,19 @@ template <typename T>
 void list<T>::pop(T element) {
   auto aux = this->ptr_front;
   while (aux != nullptr) {
-    if (aux->next()->value() == element) {
-      auto to_remove = aux->next();
-      aux->set_node(aux->next()->next());
+    if (aux->next->element == element) {
+      auto to_remove = aux->next;
+      aux->next = aux->next->next;
       std::free(to_remove);
+      this->size_value--;
       break;
     }
-    aux = aux->next();
+    aux = aux->next;
   }
 }
 
 template <typename T>
-node<T>* list<T>::push_front(T element) {
+void list<T>::push_front(T element) {
   if (this->empty()) {
     this->ptr_front = new node<T>(element);
   } else {
@@ -71,25 +72,23 @@ node<T>* list<T>::push_front(T element) {
     this->ptr_front = node_here;
   }
   this->size_value++;
-  return this->ptr_front;
 }
 
 template <typename T>
-node<T>* list<T>::push_back(T element) {
+void list<T>::push_back(T element) {
   if (this->empty()) {
     this->ptr_front = new node<T>(element);
   } else {
     auto aux = this->ptr_front;
     while (aux != nullptr) {
-      if (aux->next() == nullptr) {
+      if (aux->next == nullptr) {
         auto node_here = new node<T>(element);
-        aux->set_node(node_here);
+        aux->next = node_here;
         this->size_value++;
-        return node_here;
+        break;
       }
-      aux = aux->next();
+      aux = aux->next;
     }
-    return nullptr;
   }
 }
 

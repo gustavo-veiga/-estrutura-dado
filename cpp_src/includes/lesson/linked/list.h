@@ -22,8 +22,8 @@ class list {
 
   // Modifiers
   void pop(T value);
-  node<T>* push_front(T element);
-  node<T>* push_back(T element);
+  void push_front(T element);
+  void push_back(T element);
 
   // Capacity
   bool empty();

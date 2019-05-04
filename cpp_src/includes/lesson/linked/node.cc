@@ -7,49 +7,15 @@ namespace linked {
  */
 
 template <typename T>
-node<T>::node(T value) {
-  value_type = value;
-  next_node = nullptr;
+node<T>::node(T element) {
+  this->element = element;
+  this->next = nullptr;
 }
 
 template <typename T>
-node<T>::node(T value, node<T>* next) {
-  value_type = value;
-  next_node = next;
-}
-
-/*
- * Public Methods
- */
-
-template <typename T>
-bool node<T>::operator<(node<T>* node) {
-  return value() < node->value();
-}
-
-template <typename T>
-bool node<T>::operator>(node<T>* node) {
-  return value() > node->value();
-}
-
-template <typename T>
-bool node<T>::operator==(node<T>* node) {
-  return value() == node->value();
-}
-
-template <typename T>
-T node<T>::value() {
-  return value_type;
-}
-
-template <typename T>
-node<T>* node<T>::next() {
-  return next_node;
-}
-
-template <typename T>
-void node<T>::set_node(node<T>* node) {
-  next_node = node;
+node<T>::node(T element, node<T>* next) {
+  this->element = element;
+  this->next = next;
 }
 }  // namespace linked
 }  // namespace lesson
