@@ -15,6 +15,20 @@ list<T>::list() {
 }
 
 /*
+ * Destructors
+ */
+
+template <typename T>
+list<T>::~list() {
+  auto aux = this->ptr_front;
+  while (aux != nullptr) {
+    auto to_remove = aux;
+    aux = aux->next;
+    delete to_remove;
+  }
+}
+
+/*
  * Public Methods
  */
 
@@ -50,16 +64,34 @@ node<T>* list<T>::search(T element) {
 
 template <typename T>
 void list<T>::pop(T element) {
-  auto aux = this->ptr_front;
-  while (aux != nullptr) {
-    if (aux->next->element == element) {
-      auto to_remove = aux->next;
-      aux->next = aux->next->next;
-      std::free(to_remove);
+  if (this->empty()) {
+    // Lista está vazia
+  } else if (this->ptr_front->next == nullptr) {
+    // Só tem um nó
+    if (this->ptr_front->element == element) {
+      delete this->ptr_front;
+      this->ptr_front = nullptr;
       this->size_value--;
-      break;
     }
-    aux = aux->next;
+  } else if (this->ptr_front->element == element) {
+    // É o primero nó
+    auto to_remove = this->ptr_front;
+    this->ptr_front = this->ptr_front->next;
+    delete to_remove;
+    this->size_value--;
+  } else {
+    // Procedimento normal
+    auto aux = this->ptr_front;
+    while (aux != nullptr) {
+      if (aux->next->element == element) {
+        auto to_remove = aux->next;
+        aux->next = aux->next->next;
+        delete to_remove;
+        this->size_value--;
+        break;
+      }
+      aux = aux->next;
+    }
   }
 }
 
