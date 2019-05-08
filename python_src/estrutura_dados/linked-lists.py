@@ -1,4 +1,4 @@
-class simple_linked_list_node:
+class SimpleLinkedListNode:
     value: None
     next_node: None
 
@@ -16,14 +16,14 @@ class simple_linked_list_node:
         return f'{self.value}'
 
 
-class simple_linked_list:
+class SimpleLinkedList:
     pt_begin = None
     length = 0
 
     def __init__(self):
         pass
     
-    # Allow call len(simple_linked_list)
+    # Allow call len(SimpleLinkedList)
     def __len__(self):
         return self.length
     
@@ -31,7 +31,7 @@ class simple_linked_list:
         return self.pt_begin == None
 
     def push_back(self, value):
-        node_to_insert = simple_linked_list_node(value)
+        node_to_insert = SimpleLinkedListNode(value)
 
         if (self.is_empty()):
             self.pt_begin = node_to_insert
@@ -47,7 +47,7 @@ class simple_linked_list:
         return node_to_insert
     
     def push_front(self, value):
-        node_to_insert = simple_linked_list_node(value)
+        node_to_insert = SimpleLinkedListNode(value)
 
         if (self.is_empty()):
             return self.insert_in_begin(node_to_insert)
@@ -127,7 +127,7 @@ class simple_linked_list:
         return native_list
 
 
-def search_element(linked_list: simple_linked_list, value: int):
+def search_element(linked_list: SimpleLinkedList, value: int):
     print(f'\nProcurando pelo número {value}')
     founded = linked_list.find_node(value=value)
 
@@ -138,7 +138,7 @@ def search_element(linked_list: simple_linked_list, value: int):
 
 
 def main():
-    linked_list = simple_linked_list()
+    linked_list = SimpleLinkedList()
 
     print(f'No início a lista está com {len(linked_list)} elementos')
 
