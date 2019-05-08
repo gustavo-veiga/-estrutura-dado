@@ -20,12 +20,12 @@ function Linked() {
     }
 
     const isEmpty = () => {
-        if(lenght == 0){
+        if (lenght == 0) {
             return true
         }
         return false
     }
-    
+
     const pushBack = (value) => { // Complexidade O(n)
         if (isEmpty()) {
             ptInicio = Node(value)
@@ -37,7 +37,7 @@ function Linked() {
         while (node.next) {
             node = node.next
         }
-        
+
         node.next = Node(value)
         lenght++
         return node.next
@@ -49,11 +49,17 @@ function Linked() {
             lenght++
             return ptInicio
         }
-        //Todo Add logica do pushFront
+ 
+        let nodeHere = Node(value)
+        nodeHere.next = ptInicio
+        ptInicio = nodeHere
+        lenght++
+        return nodeHere
+
     }
 
     const removeNode = (node) => {
-        if(isEmpty()) {
+        if (isEmpty()) {
             return null
         }
 
@@ -83,11 +89,7 @@ function Linked() {
 
         return node
     }
-    
-    /* Como nao estou utilizando classe esse return da acesso ao 
-     *escopo da function Linked
-    */
-    
+
     return {
         lenght: () => lenght,
         pushBack: (value) => pushBack(value),
@@ -102,16 +104,22 @@ function Linked() {
 const list = Linked()
 
 list.pushBack(10)
-list.pushBack(20)
+list.pushFront(20)
 list.pushBack(30)
-list.pushBack(40)
+list.pushFront(40)
+
+// > 40 > 20 > 10 > 30 
+
+console.log(list.lenght())
+//list.pushBack(30)
+//list.pushBack(40)
 
 //console.log(list.lenght())
 list.showList()
 
-let target = list.findNode(1)
+//let target = list.findNode(3)
 //console.log(target)
 
-list.removeNode(target)
-list.showList()
+//list.removeNode(target)
+//list.showList()
 

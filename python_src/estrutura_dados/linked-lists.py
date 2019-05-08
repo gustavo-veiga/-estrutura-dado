@@ -1,4 +1,4 @@
-class simple_linked_list_node:
+class SimpleLinkedListNode:
     value: None
     next_node: None
 
@@ -16,26 +16,34 @@ class simple_linked_list_node:
         return f'{self.value}'
 
 
-class simple_linked_list:
+class SimpleLinkedList:
     pt_begin = None
-    length = 0
 
     def __init__(self):
         pass
     
-    # Allow call len(simple_linked_list)
+    # Allow call len(SimpleLinkedList)
     def __len__(self):
-        return self.length
+        aux = 0
+
+        if self.pt_begin == None:
+            return aux
+        
+        node_aux = self.pt_begin
+        while node_aux != None:
+            aux += 1
+            node_aux = node_aux.next_node
+        
+        return aux
     
     def is_empty(self):
         return self.pt_begin == None
 
     def push_back(self, value):
-        node_to_insert = simple_linked_list_node(value)
+        node_to_insert = SimpleLinkedListNode(value)
 
         if (self.is_empty()):
             self.pt_begin = node_to_insert
-            self.length += 1
             return node_to_insert
 
         node = self.pt_begin
@@ -43,11 +51,10 @@ class simple_linked_list:
             node = node.next_node
         
         node.set_next_node(node_to_insert)
-        self.length += 1
         return node_to_insert
     
     def push_front(self, value):
-        node_to_insert = simple_linked_list_node(value)
+        node_to_insert = SimpleLinkedListNode(value)
 
         if (self.is_empty()):
             return self.insert_in_begin(node_to_insert)
@@ -55,23 +62,22 @@ class simple_linked_list:
         begin_node = self.pt_begin
         node_to_insert.set_next_node(begin_node)
         self.pt_begin = node_to_insert
-        self.length += 1
         return node_to_insert
     
     def remove_node(self, value):
         if (self.is_empty()):
             return None
         
-        if (self.pt_begin.value == value and self.length == 1):
+        # if node to remove is first and is the only node 
+        if (self.pt_begin.value == value and self.pt_begin.next_node == None):
             node_to_return = self.pt_begin
             self.pt_begin = None
-            self.length -= 1
             return node_to_return
         
+        # if node to remove is first, but is not the only node
         if (self.pt_begin.value == value):
             node_to_return = self.pt_begin
             self.pt_begin = node_to_return.next_node
-            self.length -= 1
             return node_to_return
 
         node_to_return = None
@@ -81,7 +87,6 @@ class simple_linked_list:
                 node_to_return = current.next_node
                 node_to_insert = current.next_node.next_node
                 current.next_node = node_to_insert
-                self.length -= 1
                 break
 
             current = current.next_node
@@ -109,7 +114,6 @@ class simple_linked_list:
     
     def insert_in_begin(self, node_to_insert):
         self.pt_begin = node_to_insert
-        self.length += 1
         return node_to_insert
     
     def to_native_list(self):
@@ -127,7 +131,7 @@ class simple_linked_list:
         return native_list
 
 
-def search_element(linked_list: simple_linked_list, value: int):
+def search_element(linked_list: SimpleLinkedList, value: int):
     print(f'\nProcurando pelo número {value}')
     founded = linked_list.find_node(value=value)
 
@@ -138,7 +142,7 @@ def search_element(linked_list: simple_linked_list, value: int):
 
 
 def main():
-    linked_list = simple_linked_list()
+    linked_list = SimpleLinkedList()
 
     print(f'No início a lista está com {len(linked_list)} elementos')
 
