@@ -10,7 +10,6 @@ namespace linked {
 
 template <typename T>
 list<T>::list() {
-  this->size_value = 0;
   this->ptr_front = nullptr;
 }
 
@@ -64,30 +63,19 @@ node<T>* list<T>::search(T element) {
 
 template <typename T>
 void list<T>::pop(T element) {
-  if (this->empty()) {
-    // Lista está vazia
-  } else if (this->ptr_front->next == nullptr) {
-    // Só tem um nó
-    if (this->ptr_front->element == element) {
-      delete this->ptr_front;
-      this->ptr_front = nullptr;
-      this->size_value--;
-    }
-  } else if (this->ptr_front->element == element) {
-    // É o primero nó
+  if (this->ptr_front->element == element) {
+    // Primero nó
     auto to_remove = this->ptr_front;
     this->ptr_front = this->ptr_front->next;
     delete to_remove;
-    this->size_value--;
   } else {
-    // Procedimento normal
+    // Demais nós
     auto aux = this->ptr_front;
     while (aux != nullptr) {
       if (aux->next->element == element) {
         auto to_remove = aux->next;
         aux->next = aux->next->next;
         delete to_remove;
-        this->size_value--;
         break;
       }
       aux = aux->next;
@@ -103,7 +91,6 @@ void list<T>::push_front(T element) {
     auto node_here = new node<T>(element, this->ptr_front);
     this->ptr_front = node_here;
   }
-  this->size_value++;
 }
 
 template <typename T>
@@ -116,7 +103,6 @@ void list<T>::push_back(T element) {
       if (aux->next == nullptr) {
         auto node_here = new node<T>(element);
         aux->next = node_here;
-        this->size_value++;
         break;
       }
       aux = aux->next;
@@ -129,11 +115,6 @@ void list<T>::push_back(T element) {
 template <typename T>
 bool list<T>::empty() {
   return this->ptr_front == nullptr;
-}
-
-template <typename T>
-size_t list<T>::size() {
-  return this->size_value;
 }
 }  // namespace linked
 }  // namespace lesson

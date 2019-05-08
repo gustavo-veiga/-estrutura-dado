@@ -1,7 +1,7 @@
 #ifndef LINKED_LIST_H
 #define LINKED_LIST_H
-#include "node.h"
 #include <cstdlib>
+#include "node.h"
 
 namespace lesson {
 namespace linked {
@@ -27,7 +27,6 @@ class list {
 
   // Capacity
   bool empty();
-  size_t size();
 };
 }  // namespace linked
 }  // namespace lesson
