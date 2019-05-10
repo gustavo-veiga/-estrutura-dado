@@ -25,9 +25,6 @@ class SimpleLinkedList:
     # Allow call len(SimpleLinkedList)
     def __len__(self):
         aux = 0
-
-        if self.pt_begin == None:
-            return aux
         
         node_aux = self.pt_begin
         while node_aux != None:
