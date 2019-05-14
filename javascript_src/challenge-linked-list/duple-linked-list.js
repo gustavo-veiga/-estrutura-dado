@@ -4,11 +4,12 @@
  * 5 – Elimina o terceiro jogador contado a partir do jogador atual.
  * 7 – Elimina o jogador da rodada anterior (o jogador que tirou a carta antes).
 */
+
 class DupleLinkedNode {
-    constructor (props) {
-        this.player = props.player
-        this.nextPlayer = null
-        this.previusPlayer = null
+    constructor (value) {
+        this.value = value
+        this.nextNode = null
+        this.previusNode = null
     }
 }
 
@@ -16,68 +17,89 @@ class DupleLinkedList {
     constructor (props) {
         this.initialNode = null
     }
-
-    /* Entao meu caro gafanhoto, super acho valido criarmos uma factory para os nos
-     * eh que nao tivemos tempo de trocar uma ideia, entao to comentando esse codigo crocante
-     * e vc ve se da para aproveitar alguam merda disso aqui
-    
-
-    this.Node = (value) => { // Minha visao de factory of node
-        return {
-            value,
-            next: null,
-            previus: null
-        }
-    }
-    */
     
     isEmpty () {
-        if (this.initialNode == null) {
-            return true
-        }
-        return false
+        return this.initialNode == null
     }
 
-    lenght () {}
+    // Esse length só funciona no contexto da lista simplesmente encadeada...
+    lenght () {
+        let aux = 0
+        let node = this.initialNode
+        while (node !== null) {
+            aux++
+            node = node.nextNode
+        }
 
-    pushFront () {}
+        return aux
+    }
 
-    removeNode (nickname) {
+    pushFront (value) {
+        const node = new DupleLinkedNode(value)
+
+        if (this.isEmpty()) {
+            node.nextNode = node
+            node.previusNode = node
+            this.initialNode = node
+
+            return node
+        }
+
+        // Inserir o elemento no início da fila
+        const initialNode = this.initialNode
+        node.nextNode = initialNode.nextNode
+        initialNode.previusNode = node
+        this.initialNode = node
+
+        return node
+    }
+
+    removeNode (value) {
         if (this.isEmpty()) {
             return null
         }
 
-        // Caso o player a ser excluido seja o primeiro,
-        //passamos o ponteiro do antecessor para o proximo do proximo
-        if (this.player === nickname) { 
-            this.previusPlayer = this.nextPlayer
-            lenght--
-            return console.log(`O player ${nickname} foi para um lugar melhor :)`)
+        const nodeFounded = this.searchNodeByValue(value)
+
+        if (!nodeFounded) {
+            console.log(`Não encontramos alguem para o valor ${value}`)
+            return null
         }
 
-        let targetFromHell = searchNodeByNickname(nickname)
-            this.player = targetFromHell
-            this.previusPlayer = this.nextPlayer // Fazendo a treta do antecessor pegar o prox do prox
+        // Como é uma lista duplamente encadeada, a cada inserção, previus e next são populados
+        // Portanto, testar apenas uma chave já é suficiente
+        // A condição abaixo diz: há apenas um elemento
+        if (nodeFounded.nextNode.value === nodeFounded.value) {
+            this.initialNode = null
+            return nodeFounded
+        }
 
+        const previusNode = nodeFounded.previusNode
+        const nextNode = nodeFounded.nextNode
+        previusNode.nextNode = nextNode
+        return nodeFounded
     }
 
-    searchNodeByNickname (nickname) {
+    searchNodeByValue (value) {
         if (this.isEmpty()) {
             return null
         }
 
         let node = this.initialNode
-        let checker = 0
-        while (checker < lenght && node.next) {
-            node = node.next
-            checker++
+        let found = null
+        while (node != null) {
+            if (node.value === value) {
+                found = node
+            }
+
+            node = node.nextPlayer
         }
 
-        return node // Achamos o safado e retornamo para um lugar feliz
+        return found // Achamos o safado e retornamo para um lugar feliz
     }
 }
 
-export default {
+module.exports = {
     DupleLinkedList,
     DupleLinkedNode
 }
