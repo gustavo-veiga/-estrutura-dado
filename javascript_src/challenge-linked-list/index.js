@@ -1,22 +1,47 @@
 const { DupleLinkedList } = require('./duple-linked-list')
 
-const players = ['fulano', 'ciclano', 'beltrano', 'jordano', 'augustano']
+const players = ['fulano', 'ciclano', 'beltrano', 'jordano', 'augustano'
+                  , 'zutano', 'luciano', 'butano', 'teclando', 'thanos']
 
 /**
  * @method getRandomNumber
  * @return {Number} can be 2, 3, 5 or 7
  */
 const getRandomNumber = () => {
-  return 2
+  let randomValue = (Math.floor(Math.random() * (0 - 5 + 1) + 5))
+  
+  if (randomValue == 1) {
+    return 2
+  }
+
+  else if (randomValue == 2) {
+    return 3
+  }
+
+  else if (randomValue == 3) {
+    return 5
+  }
+
+  else if (randomValue == 4) {
+    return 7
+  }
 }
 
-const executeToTwoNumber = list => {}
+const executeToTwoNumber = list => {
+  return console.log('Executando o 2')
+}
 
-const executeToThreeNumber = list => {}
+const executeToThreeNumber = list => {
+  return console.log('Executando o 3')
+}
 
-const executeToFiveNumber = list => {}
+const executeToFiveNumber = list => {
+  return console.log('Executando o 5')
+}
 
-const executeToSevenNumber = list => {}
+const executeToSevenNumber = list => {
+  return console.log('Executando o 7')
+}
 
 const main = () => {
   console.log('Começando desafio...')
@@ -48,7 +73,8 @@ const main = () => {
     console.log(`2.1 Iniciando o round ${round}.\n`)
 
     const number = getRandomNumber()
-
+    //  console.log(number)
+  
     switch (number) {
       case 2:
         executeToTwoNumber(linkedList)
