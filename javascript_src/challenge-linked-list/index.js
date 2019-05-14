@@ -27,12 +27,17 @@ const getRandomNumber = () => {
   }
 }
 
+// Na execucao das acoes devemos receber tambem o player onde a lista esta, sua posicao
+// pois dai conseguimos montar as acoes
+
 const executeToTwoNumber = list => {
   return console.log('Executando o 2')
 }
 
 const executeToThreeNumber = list => {
-  return console.log('Executando o 3')
+  // return console.log('Executando o 3')
+  let playerToDelete = player
+
 }
 
 const executeToFiveNumber = list => {
@@ -49,15 +54,17 @@ const main = () => {
   console.log('Inicializando a lista')
   const linkedList = new DupleLinkedList()
 
+  
   console.log('ETAPAS')
   console.log('1. Populando a lista de players...\n')
-
+  
   players.forEach(player => {
     linkedList.pushFront(player)
   })
-
-  // console.log(`Verificando quantos elementos há na lista: ${linkedList.lenght()}`)
-  // console.log(linkedList.lenght()) esta função entra em loop
+  
+  console.log(linkedList)
+  // console.log(`Verificando quantos elementos há na lista: ${linkedList.lenght()}`) //esta função entra em loop
+  // console.log(linkedList.lenght()) //esta função entra em loop
 
   console.log('2. Começando as rodadas...\n')
   let winner = null
@@ -65,7 +72,7 @@ const main = () => {
 
   while (winner === null) {
     // Já encontramos um vencedor
-    // if (linkedList.lenght() === 1) {
+    // if (linkedList.nextNode == linkedList.previusNode) {
     //   winner = linkedList.initialNode.value
     //   break
     // }
@@ -74,6 +81,8 @@ const main = () => {
 
     const number = getRandomNumber()
     //  console.log(number)
+
+    break
   
     switch (number) {
       case 2:

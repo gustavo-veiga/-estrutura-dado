@@ -23,16 +23,17 @@ class DupleLinkedList {
     }
 
     // Esse length só funciona no contexto da lista simplesmente encadeada...
-    lenght () {
-        let aux = 0
-        let node = this.initialNode
-        while (node !== null) {
-            aux++
-            node = node.nextNode
-        }
+    // Nao precisamos disso
+    // lenght () {
+    //     let aux = 0
+    //     let node = this.initialNode
+    //     while (node !== null) {
+    //         aux++
+    //         node = node.nextNode
+    //     }
 
-        return aux
-    }
+    //     return aux
+    // }
 
     pushFront (value) {
         const node = new DupleLinkedNode(value)
@@ -46,6 +47,13 @@ class DupleLinkedList {
         }
 
         // Inserir o elemento no início da fila
+
+        // const currentNode = new DupleLinkedNode(value)
+        // currentNode.nextNode = this.initialNode.previusNode
+        // currentNode.previusNode = this.initialNode.nextNode
+        
+        // return currentNode
+        
         const initialNode = this.initialNode
         node.nextNode = initialNode.nextNode
         initialNode.previusNode = node
