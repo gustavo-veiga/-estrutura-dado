@@ -40,7 +40,7 @@ function StackLinked() {
 
     }
 
-    const remove = () => {
+    const remove = () => { //Todo add logica de remocao
         if (isEmpty()) {
             return null
         }
