@@ -1,91 +1,103 @@
-/* Significado das cartas
- * 2 – Pula o próximo jogador e passa a vez para o seguinte.
- * 3 – Elimina o jogador atual.
- * 5 – Elimina o terceiro jogador contado a partir do jogador atual.
- * 7 – Elimina o jogador da rodada anterior (o jogador que tirou a carta antes).
-*/
-
-class DupleLinkedNode {
+class LinkedNode {
     constructor (value) {
         this.value = value
         this.nextNode = null
-        this.previusNode = null
     }
 }
 
-class DupleLinkedList {
+class LinkedList {
     constructor (props) {
         this.initialNode = null
+    }
+
+    hasOnlyElement () {
+        if (this.isEmpty()) {
+            return false
+        }
+
+        return this.initialNode.nextNode == this.initialNode
+    }
+
+    showList () {
+        if (this.isEmpty()) {
+            return
+        }
+
+        let node = this.initialNode
+        while (node.nextNode !== this.initialNode) {
+            console.log(`Player: ${node.value}`)
+
+            node = node.nextNode
+        }
     }
     
     isEmpty () {
         return this.initialNode == null
     }
 
-    // Esse length só funciona no contexto da lista simplesmente encadeada...
-    // Nao precisamos disso
-    // lenght () {
-    //     let aux = 0
-    //     let node = this.initialNode
-    //     while (node !== null) {
-    //         aux++
-    //         node = node.nextNode
-    //     }
-
-    //     return aux
-    // }
-
-    pushFront (value) {
-        const node = new DupleLinkedNode(value)
+    push (value) {
+        const node = new LinkedNode(value)
 
         if (this.isEmpty()) {
             node.nextNode = node
-            node.previusNode = node
             this.initialNode = node
-
             return node
         }
 
-        // Inserir o elemento no início da fila
+        const currentNode = new LinkedNode(value)
+        currentNode.nextNode = this.initialNode.nextNode
+        this.initialNode.nextNode = currentNode
 
-        // const currentNode = new DupleLinkedNode(value)
-        // currentNode.nextNode = this.initialNode.previusNode
-        // currentNode.previusNode = this.initialNode.nextNode
-        
-        // return currentNode
-        
-        const initialNode = this.initialNode
-        node.nextNode = initialNode.nextNode
-        initialNode.previusNode = node
-        this.initialNode = node
+        return currentNode
+    }
+
+    getLastElement () {
+        let node = this.initialNode
+
+        while (node.nextNode != this.initialNode) {
+            node = node.nextNode
+        }
 
         return node
     }
 
-    removeNode (value) {
+    removeNode (nodeToRemove) {
         if (this.isEmpty()) {
             return null
         }
 
-        const nodeFounded = this.searchNodeByValue(value)
+        console.log('Como esta´a lista?')
+        this.showList()
 
-        if (!nodeFounded) {
-            console.log(`Não encontramos alguem para o valor ${value}`)
-            return null
+        console.log(`Removendo o player ${nodeToRemove.value}`)
+
+        if (this.initialNode.value === nodeToRemove.value) {
+            const lastElement = this.getLastElement()
+            lastElement.nextNode = this.initialNode.nextNode
+            this.initialNode = this.initialNode.nextNode
+
+            return nodeToRemove
         }
 
-        // Como é uma lista duplamente encadeada, a cada inserção, previus e next são populados
-        // Portanto, testar apenas uma chave já é suficiente
-        // A condição abaixo diz: há apenas um elemento
-        if (nodeFounded.nextNode.value === nodeFounded.value) {
-            this.initialNode = null
-            return nodeFounded
-        }
+        let node = this.initialNode
+        let found = null
+        do {
+            if (node.nextNode.value == nodeToRemove.value) {
+                found = { ...node.nextNode }
+                node.nextNode = found.nextNode
+                break
+            }
 
-        const previusNode = nodeFounded.previusNode
-        const nextNode = nodeFounded.nextNode
-        previusNode.nextNode = nextNode
-        return nodeFounded
+            node = node.nextNode
+        } while (node.nextNode != this.initialNode)
+
+        console.log('Como está a lista depois?')
+        this.showList()
+
+        console.log(`found`)
+        console.log(found)
+
+        return found
     }
 
     searchNodeByValue (value) {
@@ -95,19 +107,25 @@ class DupleLinkedList {
 
         let node = this.initialNode
         let found = null
-        while (node != null) {
+        while (true) {
             if (node.value === value) {
                 found = node
+                break
             }
 
-            node = node.nextPlayer
+            // cheguei no início, percorri a lista toda
+            if (node.nextNode == this.initialNode) {
+                break
+            }
+
+            node = node.nextNode
         }
 
-        return found // Achamos o safado e retornamo para um lugar feliz
+        return found
     }
 }
 
 module.exports = {
-    DupleLinkedList,
-    DupleLinkedNode
+    LinkedList,
+    LinkedNode
 }
