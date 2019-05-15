@@ -1,4 +1,4 @@
-const { DupleLinkedList } = require('./duple-linked-list')
+const { LinkedList } = require('./duple-linked-list')
 
 const players = ['fulano', 'ciclano', 'beltrano', 'jordano', 'augustano'
                   , 'zutano', 'luciano', 'butano', 'teclando', 'thanos']
@@ -27,83 +27,98 @@ const getRandomNumber = () => {
   }
 }
 
+/* Significado das cartas
+ * 2 – Pula o próximo jogador e passa a vez para o seguinte.
+ * 3 – Elimina o jogador atual.
+ * 5 – Elimina o terceiro jogador contado a partir do jogador atual.
+ * 7 – Elimina o jogador da rodada anterior (o jogador que tirou a carta antes).
+*/
 // Na execucao das acoes devemos receber tambem o player onde a lista esta, sua posicao
 // pois dai conseguimos montar as acoes
 
-const executeToTwoNumber = list => {
-  return console.log('Executando o 2')
+const executeToTwoNumber = (currentPlayer) => {
+  return currentPlayer.nextNode.nextNode
 }
 
-const executeToThreeNumber = list => {
-  // return console.log('Executando o 3')
-  let playerToDelete = player
-
+const executeToThreeNumber = (list, currentPlayer) => {
+  list.removeNode(currentPlayer)
+  return currentPlayer.nextNode
 }
 
-const executeToFiveNumber = list => {
-  return console.log('Executando o 5')
+const executeToFiveNumber = (list, currentPlayer) => {
+  const playerToRemove = currentPlayer.nextNode.nextNode
+  list.removeNode(playerToRemove)
+  return currentPlayer.nextNode
 }
 
-const executeToSevenNumber = list => {
-  return console.log('Executando o 7')
+const executeToSevenNumber = (list, currentPlayer, lastPlayer) => {
+  list.removeNode(lastPlayer)
+  return currentPlayer.nextNode
 }
 
 const main = () => {
   console.log('Começando desafio...')
 
   console.log('Inicializando a lista')
-  const linkedList = new DupleLinkedList()
+  const linkedList = new LinkedList()
 
   
   console.log('ETAPAS')
   console.log('1. Populando a lista de players...\n')
   
   players.forEach(player => {
-    linkedList.pushFront(player)
+    linkedList.push(player)
   })
-  
-  console.log(linkedList)
-  // console.log(`Verificando quantos elementos há na lista: ${linkedList.lenght()}`) //esta função entra em loop
-  // console.log(linkedList.lenght()) //esta função entra em loop
 
   console.log('2. Começando as rodadas...\n')
   let winner = null
   let round = 1
+  let currentPlayer = { ...linkedList.initialNode }
+  let lastPlayer = { ...linkedList.initialNode }
 
   while (winner === null) {
     // Já encontramos um vencedor
-    // if (linkedList.nextNode == linkedList.previusNode) {
-    //   winner = linkedList.initialNode.value
-    //   break
-    // }
+    if (linkedList.hasOnlyElement()) {
+      console.log('\nChegamos no primeiro elemento')
+      winner = linkedList.initialNode.value
+      break
+    }
 
     console.log(`2.1 Iniciando o round ${round}.\n`)
 
     const number = getRandomNumber()
-    //  console.log(number)
 
-    break
+    console.log(`O jogador atual é o ${currentPlayer.value}`)
+    console.log(`Foi tirada a carta ${number}`)
   
     switch (number) {
       case 2:
-        executeToTwoNumber(linkedList)
+        currentPlayer = executeToTwoNumber(currentPlayer)
         break
       case 3:
-        executeToThreeNumber(linkedList)
+        currentPlayer = executeToThreeNumber(linkedList, currentPlayer)
         break
       case 5:
-        executeToFiveNumber(linkedList)
+        currentPlayer = executeToFiveNumber(linkedList, currentPlayer)
         break
       case 7:
-        executeToSevenNumber(linkedList)
+        if (round === 1) {
+          currentPlayer = currentPlayer.nextNode
+          break
+        }
+        currentPlayer = executeToSevenNumber(linkedList, currentPlayer, lastPlayer)
         break
     }
+
+    lastPlayer = { ...currentPlayer }
+
+    console.log(`\nPassando para o player ${currentPlayer.value}`)
 
     round++
   }
 
-  console.log('3. Mostrando o vencedor...')
-  console.log(`O vencedor é o player ${winner}`)
+  console.log('\n3. Mostrando o vencedor...')
+  console.log(`O vencedor ${winner} é implacável`)
 }
 
 main()
