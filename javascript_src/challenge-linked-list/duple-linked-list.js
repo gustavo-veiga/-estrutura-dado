@@ -24,11 +24,11 @@ class LinkedList {
         }
 
         let node = this.initialNode
-        while (node.nextNode !== this.initialNode) {
-            console.log(`Player: ${node.value}`)
-
+        do {
+            console.log(`=>>>> Player: ${node.value}`)
             node = node.nextNode
         }
+        while (node !== this.initialNode)
     }
     
     isEmpty () {
@@ -66,10 +66,10 @@ class LinkedList {
             return null
         }
 
-        console.log('Como esta´a lista?')
+        console.log('=>>> Como está a lista?')
         this.showList()
 
-        console.log(`Removendo o player ${nodeToRemove.value}`)
+        console.log(`=>>>> Removendo o player ${nodeToRemove.value}`)
 
         if (this.initialNode.value === nodeToRemove.value) {
             const lastElement = this.getLastElement()
@@ -90,12 +90,6 @@ class LinkedList {
 
             node = node.nextNode
         } while (node.nextNode != this.initialNode)
-
-        console.log('Como está a lista depois?')
-        this.showList()
-
-        console.log(`found`)
-        console.log(found)
 
         return found
     }
