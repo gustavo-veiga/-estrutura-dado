@@ -1,16 +1,16 @@
 class LinkedNode {
-    constructor (value) {
+    constructor(value) {
         this.value = value
         this.nextNode = null
     }
 }
 
 class LinkedList {
-    constructor (props) {
+    constructor(props) {
         this.initialNode = null
     }
 
-    hasOnlyElement () {
+    hasOnlyElement() {
         if (this.isEmpty()) {
             return false
         }
@@ -18,7 +18,7 @@ class LinkedList {
         return this.initialNode.nextNode == this.initialNode
     }
 
-    showList () {
+    showList() {
         if (this.isEmpty()) {
             return
         }
@@ -30,12 +30,12 @@ class LinkedList {
         }
         while (node !== this.initialNode)
     }
-    
-    isEmpty () {
+
+    isEmpty() {
         return this.initialNode == null
     }
 
-    push (value) {
+    push(value) {
         const node = new LinkedNode(value)
 
         if (this.isEmpty()) {
@@ -51,7 +51,7 @@ class LinkedList {
         return currentNode
     }
 
-    getLastElement () {
+    getLastElement() {
         let node = this.initialNode
 
         while (node.nextNode != this.initialNode) {
@@ -61,7 +61,7 @@ class LinkedList {
         return node
     }
 
-    removeNode (nodeToRemove) {
+    removeNode(nodeToRemove) {
         if (this.isEmpty()) {
             return null
         }
@@ -94,7 +94,7 @@ class LinkedList {
         return found
     }
 
-    searchNodeByValue (value) {
+    searchNodeByValue(value) {
         if (this.isEmpty()) {
             return null
         }
