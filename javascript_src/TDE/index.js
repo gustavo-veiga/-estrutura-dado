@@ -107,84 +107,83 @@ const main = () => {
     })
 
     console.log('=> A lista foi populada com sucesso')
-        // console.clear()
-        // linkedList.showList()
-    
+    // console.clear()
+    linkedList.showList()
 
-console.log('=> Começando as rodadas...\n')
-let winner = null
-let round = 1
-let currentPlayer = { ...linkedList.initialNode }
-let lastPlayer = { ...linkedList.initialNode }
-let lastNumber = null
+    console.log('=> Começando as rodadas...\n')
+    let winner = null
+    let round = 1
+    let currentPlayer = { ...linkedList.initialNode }
+    let lastPlayer = { ...linkedList.initialNode }
+    let lastNumber = null
 
-while (winner === null) {
-    // Já encontramos um vencedor
-    if (linkedList.hasOnlyElement()) {
-        console.log('\n=>> Chegamos no primeiro elemento')
-        winner = linkedList.initialNode.value
-        break
+    while (winner === null) {
+        // Já encontramos um vencedor
+        if (linkedList.hasOnlyElement()) {
+            console.log('\n=>> Chegamos no primeiro elemento')
+            winner = linkedList.initialNode.value
+            break
+        }
+
+        console.log(`\n=>> Iniciando o round ${round}.\n`)
+
+        
+        console.log(`=>> O jogador atual é o ${currentPlayer.value}`)
+        
+        let jogada = readline.question('=>>Pressione enter para selecionar uma carta!')
+        const number = getRandomNumber()
+
+        console.log(`=>> Foi tirada a carta ${number}`)
+
+        const auxCurrentPlayer = { ...currentPlayer }
+
+        switch (number) {
+            case 0:
+                currentPlayer = executeToZeroNumber()
+                break
+
+            case 1:
+                currentPlayer = executeToOneNumber(currentPlayer)
+                break
+
+            case 3:
+                currentPlayer = executeToThreeNumber(linkedList, currentPlayer)
+                break
+
+            case 9:
+                currentPlayer = executeToNineNumber(linkedList, currentPlayer)
+                break
+
+            case 12:
+                if (round === 1) {
+                    console.log('=>> Pulando para o próximo jogador, pois é a primeira rodada')
+                    currentPlayer = currentPlayer.nextNode
+                    break
+                }
+
+                if ([3].includes(lastNumber)) {
+                    console.log('=>> Pulando para o próximo player pois a carta anterior é a 3, que já eliminou o jogador anterior')
+                    currentPlayer = currentPlayer.nextNode
+                    break
+                }
+                currentPlayer = executeToTwelveNumber(linkedList, currentPlayer, lastPlayer)
+                break
+
+            case 13:
+                currentPlayer = executeToThirteenNumber()
+                break
+        }
+
+        lastPlayer = { ...auxCurrentPlayer }
+        lastNumber = number
+
+        console.log(`=>> Passando para o player ${currentPlayer.value}`)
+
+        round++
     }
 
-    console.log(`\n=>> Iniciando o round ${round}.\n`)
-
-    
-    console.log(`=>> O jogador atual é o ${currentPlayer.value}`)
-    
-    let jogada = readline.question('=>>Pressione enter para selecionar uma carta!')
-    const number = getRandomNumber()
-
-    console.log(`=>> Foi tirada a carta ${number}`)
-
-    const auxCurrentPlayer = { ...currentPlayer }
-
-    switch (number) {
-        case 0:
-            currentPlayer = executeToZeroNumber()
-            break
-
-        case 1:
-            currentPlayer = executeToOneNumber(currentPlayer)
-            break
-
-        case 3:
-            currentPlayer = executeToThreeNumber(linkedList, currentPlayer)
-            break
-
-        case 9:
-            currentPlayer = executeToNineNumber(linkedList, currentPlayer)
-            break
-
-        case 12:
-            if (round === 1) {
-                console.log('=>> Pulando para o próximo jogador, pois é a primeira rodada')
-                currentPlayer = currentPlayer.nextNode
-                break
-            }
-
-            if ([3].includes(lastNumber)) {
-                console.log('=>> Pulando para o próximo player pois a carta anterior é a 3, que já eliminou o jogador anterior')
-                currentPlayer = currentPlayer.nextNode
-                break
-            }
-            currentPlayer = executeToTwelveNumber(linkedList, currentPlayer, lastPlayer)
-            break
-
-        case 13:
-            currentPlayer = executeToThirteenNumber()
-            break
-    }
-
-    lastPlayer = { ...auxCurrentPlayer }
-    lastNumber = number
-
-    console.log(`=>> Passando para o player ${currentPlayer.value}`)
-
-    round++
-}
-
-console.log('\n=>>>> Mostrando o vencedor...')
-console.log(`\n=>>>> O vencedor ${winner} é implacável`)
+    console.log('\n=>>>> Mostrando o vencedor...')
+    console.log(`\n=>>>> O vencedor ${winner} é implacável`)
 
 }
 

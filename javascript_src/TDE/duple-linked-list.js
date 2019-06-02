@@ -49,18 +49,18 @@ class LinkedList {
 
         if (this.hasOnlyElement()) {
             const currentNode = new LinkedNode(value)
-            currentNode.nextNode = this.initialNode.previousNode
-            node.initialNode.nextNode = currentNode.previousNode
-
-            return currentNode
-
+            this.initialNode.nextNode = currentNode
+            currentNode.previousNode = this.initialNode
+            currentNode.nextNode = this.initialNode    
         }
+
         const currentNode = new LinkedNode(value)
         currentNode.nextNode = this.initialNode.nextNode
-        node.initialNode.nextNode = currentNode.previousNode
+        this.initialNode.nextNode.previousNode = currentNode
+        currentNode.previousNode = this.initialNode
+        this.initialNode.nextNode = currentNode
 
         return currentNode
-
     }
 
     removeNode(nodeToRemove) {
