@@ -43,21 +43,21 @@ class LinkedList {
             const node = new LinkedNode(value)
             node.nextNode = node
             node.previousNode = node
-            this.initialNode = node
+            node.initialNode = node
             return node
         }
 
         if (this.hasOnlyElement()) {
             const currentNode = new LinkedNode(value)
             currentNode.nextNode = this.initialNode.previousNode
-            this.initialNode.nextNode = currentNode.previousNode
+            node.initialNode.nextNode = currentNode.previousNode
 
             return currentNode
 
         }
         const currentNode = new LinkedNode(value)
         currentNode.nextNode = this.initialNode.nextNode
-        this.initialNode.nextNode = currentNode.previousNode
+        node.initialNode.nextNode = currentNode.previousNode
 
         return currentNode
 

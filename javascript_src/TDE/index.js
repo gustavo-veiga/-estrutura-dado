@@ -77,7 +77,7 @@ const main = () => {
     console.log('=> Começando desafio...')
 
     console.log('=> Inicializando a lista')
-        const linkedList = new LinkedList()
+    const linkedList = new LinkedList()
 
     console.log('=> Insira a lista de players...\n')
 
@@ -87,14 +87,16 @@ const main = () => {
 	console.log("O jogo se inicia com no minimo 5 e no maximo 10 jogadores :)")
 	
     for (let i = 0; i < 10; i++) {
-		
+		// TODO: Só aceitar valores de nomes válidos
+        // TODO: Permitir nomes pré-definidos
 		players[i] = readline.question(`Digite o nome do player ${i + 1}: `)
-		
+        
+        // TODO: É quando o valor de i for 5, mostrar a mensagem: "Digite 0 para finalizar aqui"
 		if ( players[i] === '0' && i >= 5) {
-			i = 10
+			break
 		}
 		else if (players[i] === '0' && i <= 5) {
-			console.log("Ainda não cumorimos nossa meta, não é mesmo? ")
+			console.log("Ainda não cumprimos nossa meta, não é mesmo? ")
 			i--
 		}
 	}
