@@ -1,6 +1,18 @@
 const readline = require('readline-sync')
 const { LinkedList } = require('./duple-linked-list')
 
+let gameWay = 'nextNode'
+
+// let gameWayAvailable = ['nextNode', 'previousNode']
+
+const getNextWay = currentWay => {
+    if (currentWay === 'nextNode') {
+        return 'previousNode'
+    }
+
+    return 'nextNode'
+}
+
 /**
  * @method getRandomNumber
  * @return {Number} can be 1, 3, 9 or 12
@@ -44,32 +56,37 @@ const getRandomNumber = () => {
 
 const executeToOneNumber = (currentPlayer) => {
     console.log('=>> Pula o próximo jogador e passa a vez para o seguinte')
-    return currentPlayer.nextNode.nextNode
+    return currentPlayer[gameWay][gameWay]
 }
 
 const executeToThreeNumber = (list, currentPlayer) => {
-    const playerToRemove = currentPlayer.nextNode.nextNode
+    const playerToRemove = currentPlayer[gameWay][gameWay]
     console.log('=>> Elimina o terceiro jogador contado a partir do jogador atual.')
     list.removeNode(playerToRemove)
-    return currentPlayer.nextNode
+    return currentPlayer[gameWay]
 }
 
 const executeToNineNumber = (list, currentPlayer, lastPlayer) => {
     console.log('=>> Elimina o jogador da rodada anterior (o jogador que tirou a carta antes).')
     list.removeNode(lastPlayer)
-    return currentPlayer.nextNode
+    return currentPlayer[gameWay]
 }
 
-const executeToTwelveNumber = () => {
+const executeToTwelveNumber = (currentPlayer) => {
     console.log('Inverte o sentido do jogo')
+    gameWay = getNextWay(gameWay)
+    console.log(`O sentido passará a ser: ${gameWay}`)
+    return currentPlayer[gameWay]
 }
 
 const executeToZeroNumber = (currentPlayer) => {
     console.log(`O jogador ${currentPlayer} ficara 3 rodadas sem poder jogar`)
+    return currentPlayer[gameWay]
 }
 
-const executeToThirteenNumber = () => {
+const executeToThirteenNumber = (currentPlayer) => {
     console.log('Escolha quantos jogadores deseja pular: ')
+    return currentPlayer[gameWay]
 }
 
 
@@ -136,7 +153,7 @@ const main = () => {
         // Já encontramos um vencedor
         if (linkedList.hasOnlyElement()) {
             console.log('\n=>> Chegamos no primeiro elemento')
-            winner = linkedList.initialNode.value
+            winner = currentPlayer.value
             break
         }
 
@@ -145,7 +162,8 @@ const main = () => {
         
         console.log(`=>> O jogador atual é o ${currentPlayer.value}`)
         
-        let jogada = readline.question('=>>Pressione enter para selecionar uma carta!')
+        readline.question('=>>Pressione enter para selecionar uma carta!')
+
         const number = getRandomNumber()
 
         console.log(`=>> Foi tirada a carta ${number}`)
@@ -154,7 +172,7 @@ const main = () => {
 
         switch (number) {
             case 0:
-                currentPlayer = executeToZeroNumber()
+                currentPlayer = executeToZeroNumber(currentPlayer)
                 break
 
             case 1:
@@ -166,26 +184,21 @@ const main = () => {
                 break
 
             case 9:
-                currentPlayer = executeToNineNumber(linkedList, currentPlayer)
+                if (round === 1) {
+                    console.log('=>> Pulando para o próximo jogador, pois é a primeira rodada')
+                    currentPlayer = currentPlayer[gameWay]
+                    break
+                }
+
+                currentPlayer = executeToNineNumber(linkedList, currentPlayer, lastPlayer)
                 break
 
             case 12:
-                if (round === 1) {
-                    console.log('=>> Pulando para o próximo jogador, pois é a primeira rodada')
-                    currentPlayer = currentPlayer.nextNode
-                    break
-                }
-
-                if ([3].includes(lastNumber)) {
-                    console.log('=>> Pulando para o próximo player pois a carta anterior é a 3, que já eliminou o jogador anterior')
-                    currentPlayer = currentPlayer.nextNode
-                    break
-                }
-                currentPlayer = executeToTwelveNumber(linkedList, currentPlayer, lastPlayer)
+                currentPlayer = executeToTwelveNumber(currentPlayer)
                 break
 
             case 13:
-                currentPlayer = executeToThirteenNumber()
+                currentPlayer = executeToThirteenNumber(currentPlayer)
                 break
         }
 
