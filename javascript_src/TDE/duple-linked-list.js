@@ -73,27 +73,15 @@ class LinkedList {
 
         console.log(`=>>>> Removendo o player ${nodeToRemove.value}`)
 
-        if (this.initialNode.value === nodeToRemove.value) {
-            const lastElement = this.getLastElement()
-            lastElement.nextNode = this.initialNode.nextNode
-            this.initialNode = this.initialNode.nextNode
+        const previusElement = nodeToRemove.previousNode
+        const nextElement = nodeToRemove.nextElement
 
-            return nodeToRemove
-        }
+        previusElement.nextNode = nextElement
+        nextElement.previousNode = previusElement
+        nodeToRemove.nextNode = null
+        nodeToRemove.previousNode = null
 
-        let node = this.initialNode
-        let found = null
-        do {
-            if (node.nextNode.value == nodeToRemove.value) {
-                found = { ...node.nextNode }
-                node.nextNode = found.nextNode
-                break
-            }
-
-            node = node.nextNode
-        } while (node.nextNode != this.initialNode)
-
-        return found
+        return nodeToRemove
     }
 
 }
