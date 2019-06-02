@@ -13,7 +13,7 @@ const { LinkedList } = require('./duple-linked-list')
  */
 
 const getRandomNumber = () => {
-    let randomValue = (Math.floor(Math.random() * (0 - 5 + 1) + 5))
+    let randomValue = (Math.floor(Math.random() * (0 - 2 + 1) + 2))
 
     if (randomValue == 1) {
         return 1
@@ -31,7 +31,6 @@ const getRandomNumber = () => {
         return 12
     }
 
-    /*
     else if (randomValue == 5) {
         return 0
     }
@@ -39,9 +38,8 @@ const getRandomNumber = () => {
     else if (randomValue == 6) {
         return 13
     }
-    */
+    
 }
-
 
 const executeToOneNumber = (currentPlayer) => {
     console.log('=>> Pula o próximo jogador e passa a vez para o seguinte')
@@ -74,9 +72,6 @@ const executeToThirteenNumber = () => {
 }
 
 
-
-
-
 const main = () => {
     console.clear()
     console.log('=> Começando desafio...')
@@ -87,9 +82,22 @@ const main = () => {
     console.log('=> Insira a lista de players...\n')
 
     let players = []
+	let countOfPlayers = 0
+	
+	console.log("O jogo se inicia com no minimo 5 e no maximo 10 jogadores :)")
+	
     for (let i = 0; i < 10; i++) {
-        players[i] = readline.question(`Digite o nome do player ${i + 1}: `)
-    }
+		
+		players[i] = readline.question(`Digite o nome do player ${i + 1}: `)
+		
+		if ( players[i] === '0' && i >= 5) {
+			i = 10
+		}
+		else {
+			console.log("Ainda não cumorimos nossa meta, não é mesmo? ")
+			i--
+		}
+	}
 
     // Carregando a lista duplamente encadeada
     players.forEach(player => {

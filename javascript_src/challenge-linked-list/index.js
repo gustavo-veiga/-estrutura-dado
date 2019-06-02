@@ -1,3 +1,4 @@
+const readline = require('readline-sync')
 const { LinkedList } = require('./duple-linked-list')
 
 const players = ['fulano', 'ciclano', 'beltrano', 'jordano', 'augustano'
@@ -61,6 +62,7 @@ const executeToSevenNumber = (list, currentPlayer, lastPlayer) => {
 }
 
 const main = () => {
+  console.clear()
   console.log('=> Começando desafio...')
 
   console.log('=> Inicializando a lista')
@@ -96,6 +98,9 @@ const main = () => {
     const number = getRandomNumber()
 
     console.log(`=>> O jogador atual é o ${currentPlayer.value}`)
+  
+	const jogada = readline.question("=> Pressione enter para tirar uma carta! ")
+  
     console.log(`=>> Foi tirada a carta ${number}`)
 
     const auxCurrentPlayer = { ...currentPlayer }
