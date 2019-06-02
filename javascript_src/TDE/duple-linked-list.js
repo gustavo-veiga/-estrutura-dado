@@ -32,7 +32,7 @@ class LinkedList {
         let node = this.initialNode
         do {
             console.log(`=>>>> Player: ${node.value}`)
-            node = this.node.nextNode
+            node = node.nextNode
         }
         while (node.nextNode !== this.initialNode)
     }
@@ -43,7 +43,7 @@ class LinkedList {
             const node = new LinkedNode(value)
             node.nextNode = node
             node.previousNode = node
-            node.initialNode = node
+            this.initialNode = node
             return node
         }
 
