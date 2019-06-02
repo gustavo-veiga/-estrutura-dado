@@ -93,7 +93,7 @@ const main = () => {
 		if ( players[i] === '0' && i >= 5) {
 			i = 10
 		}
-		else {
+		else if (players[i] === '0' && i <= 5) {
 			console.log("Ainda não cumorimos nossa meta, não é mesmo? ")
 			i--
 		}
