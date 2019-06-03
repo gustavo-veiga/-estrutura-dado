@@ -80,12 +80,23 @@ const executeToTwelveNumber = (currentPlayer) => {
 }
 
 const executeToZeroNumber = (currentPlayer) => {
-    console.log(`O jogador ${currentPlayer} ficara 3 rodadas sem poder jogar`)
+    console.log(`O jogador ${currentPlayer.value} ficara 3 rodadas sem poder jogar`)
     return currentPlayer[gameWay]
 }
 
 const executeToThirteenNumber = (currentPlayer) => {
-    console.log('Escolha quantos jogadores deseja pular: ')
+    
+    let stepPlayers = readline.question(`${currentPlayer.value} escolha quantos jogadores deseja pular: `)
+    stepPlayers = parseInt(stepPlayers)   
+
+    // TODO: Adicionar condicao para aceitar somente numeros
+    
+    for (let i = 0; i < stepPlayers ; i ++) {
+        currentPlayer = currentPlayer[gameWay]
+    }
+
+    console.log(`Foram pulados ${stepPlayers} jogadores, passando a vez para o ${currentPlayer[gameWay].value}`)
+        
     return currentPlayer[gameWay]
 }
 
@@ -162,7 +173,7 @@ const main = () => {
         
         console.log(`=>> O jogador atual é o ${currentPlayer.value}`)
         
-        readline.question('=>>Pressione enter para selecionar uma carta!')
+        readline.question('=>>Pressione enter para selecionar uma carta! [ Enter ]')
 
         const number = getRandomNumber()
 
