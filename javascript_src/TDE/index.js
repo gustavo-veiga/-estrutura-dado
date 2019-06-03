@@ -133,8 +133,7 @@ const main = () => {
             // TODO: Só aceitar valores de nomes válidos
             players[i] = readline.question(`Digite o nome do player ${i + 1}: `)
             
-            // TODO: É quando o valor de i for 5, mostrar a mensagem: "Digite 0 para finalizar aqui"
-            if ( players[i] === '0' && i >= 5) {
+            if ( players[i] === '0' && i == 5) {
                 break
             }
             else if (players[i] === '0' && i <= 5) {
