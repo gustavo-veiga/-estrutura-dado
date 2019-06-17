@@ -3,7 +3,7 @@ Este projeto é uma implementação em C++ dos exercícios de Estrutura de Dados
 
 ## Requisitos de Compilação
 * [Buck](#buck)
-* [Compilador C++11](#compilador-c++11)
+* [Compilador C++11](#compilador-c11)
 
 ## Buck
 [Buck][buck] é um sistema de construção desenvolvido e usado pelo Facebook. Ele foi projetado para construir pequenos módulos reutilizáveis, consistindo de código e recursos.
