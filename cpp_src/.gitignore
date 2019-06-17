@@ -1,8 +1,12 @@
 .vscode/
-buid/
 .idea/
+.buckd/
+buck-out/
+buid/
+.directory
 
 *.o
 *.so
 *.dll
 *.exe
+*.dylib

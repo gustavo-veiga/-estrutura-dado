@@ -1,0 +1,2 @@
+[cxx]
+  cxxflags = -Wall -O3 -std=c++11 -march=native

@@ -1,0 +1,36 @@
+cxx_library(
+  name = 'lesson',
+  header_namespace = 'lesson',
+  exported_headers = subdir_glob([('lesson/include', '**/*.h')]),
+  headers = subdir_glob([('lesson/private', '**/*.h')]),
+  srcs = glob(['lesson/source/**/*.cc',])
+)
+
+cxx_binary(
+  name = 'list',
+  header_namespace = 'list',
+  headers = subdir_glob([('list/private', '**/*.h')]),
+  srcs = glob(['list/source/**/*.cc',]),
+  deps = [':lesson']
+)
+
+cxx_binary(
+  name = 'task1',
+  headers = subdir_glob([('task1/private', '**/*.h')]),
+  srcs = glob(['task1/source/**/*.cc',]),
+  deps = [':lesson']
+)
+
+cxx_binary(
+  name = 'task2',
+  headers = subdir_glob([('task2/private', '**/*.h')]),
+  srcs = glob(['task2/source/**/*.cc',]),
+  deps = [':lesson']
+)
+
+cxx_binary(
+  name = 'game',
+  headers = subdir_glob([('game/private', '**/*.h')]),
+  srcs = glob(['game/source/**/*.cc',]),
+  deps = [':lesson']
+)
