@@ -1,9 +1,11 @@
 # Implementação em C++
 Este projeto é uma implementação em C++ dos exercícios de Estrutura de Dados.
 
-## Requisitos de Compilação
+## Índice
 * [Buck](#buck)
 * [Compilador C++11](#compilador-c11)
+* [Configuração no Windows](#configuração-no-windows)
+* [Compilando e Executando](#compilando-e-executando)
 
 ## Buck
 [Buck][buck] é um sistema de construção desenvolvido e usado pelo Facebook. Ele foi projetado para construir pequenos módulos reutilizáveis, consistindo de código e recursos.
@@ -29,6 +31,20 @@ A Implementação completa do C++11 nos compiladores está disponível nas segui
 * Clang 3.3 ([veja mais][clang_status])
 * Intel C++ Compiler 14.0 ([veja mais][intel_status])
 * Visual Studio 2015 ([veja mais][visual_studio_status])
+
+## Configuração no Windows
+É assim que você configura o desenvolvimento do PowerShell com C++ para poder usar o Visual Studio Toolchain. Precisamos exportar variáveis ​​de ambiente do Visual Studio no PowerShell, pois isso não é feito por padrão.
+
+1. Instale o [Visual Studio][visual_studio] e verifique se você instalou o VC++.
+2. Abra o PowerShell como administrador e execute os seguintes comandos:
+    ```
+    set-executionpolicy unrestricted
+    Install-Module -Name PSCX -AllowClobber
+    Install-Module -Name VSSetup -AllowClobber
+    Import-VisualStudioVars 2017 amd64
+    ```
+
+Agora você pode usar o Visual Studio Compiler e ferramentas como o Buck poderão pegar seu toolchain. Como o `Import-VisualStudioVars 2017 amd64` não está exportando permanentemente as variáveis ​​de ambiente, você precisará executar novamente esse comando em cada nova sessão do PowerShell.
 
 ## Compilando e Executando
 Os binários encontram-se em `buck-out/gen/<nome do executável>`
@@ -56,6 +72,7 @@ buck run :game
 [buck]: https://buck.build
 [buck_releases]: https://github.com/facebook/buck/releases
 [buckaroo]: https://buckaroo.pm/
+[visual_studio]: https://visualstudio.microsoft.com/
 [homebrew_fb]: https://github.com/facebook/homebrew-fb
 [chocolatey_package]: https://chocolatey.org/packages/buck
 [portable_linux]: https://github.com/LoopPerfect/buckaroo/wiki/Installation#linux-1
