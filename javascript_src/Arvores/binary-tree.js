@@ -19,7 +19,7 @@ class BinaryTree {
     binaryConstructor (value, currentNode) {
         // Show the magic
         let newNode = new BinaryNode(value)
-        let currentNode = this.rootNode
+        currentNode = this.rootNode
         // Arvore vazia, o primeiro no vira raiz
         if (this.isEmpty()) {
             this.rootNode = newNode
@@ -38,7 +38,9 @@ class BinaryTree {
         }
     }
 
-    preorderPrinting (Node) {
+    preorderPrinting () {
+        let Node = this.rootNode
+
         console.log(Node.value)
 
         if (Node.leftNode !== null) {
@@ -47,6 +49,18 @@ class BinaryTree {
         if (Node.rightNode !== null) {
             this.preorderPrinting(Node.rightNode)
         }
+    }
+
+    orderPrinting() {
+        let Node = this.rootNode
+        
+        if (Node.leftNode !== null) {
+            this.preorderPrinting(Node.leftNode)
+        }
+        if (Node.rightNode !== null) {
+            this.preorderPrinting(Node.rightNode)
+        }
+        console.log(Node.value)
     }
 }
 
