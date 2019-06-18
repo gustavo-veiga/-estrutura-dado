@@ -16,31 +16,48 @@ class BinaryTree {
         return this.rootNode === null
     }
 
-    binaryConstructor (value, currentNode) {
+    binaryConstructor (value, currentNode = this.rootNode) {
         // Show the magic
-        let newNode = new BinaryNode(value)
-        currentNode = this.rootNode
-        // Arvore vazia, o primeiro no vira raiz
+        
         if (this.isEmpty()) {
+            let newNode = new BinaryNode(value)
             this.rootNode = newNode
-        } else if (newNode.value < currentNode.value) {
-            if (currentNode.leftNode === null) {
-                currentNode.leftNode = newNode
-            } else {
+            return
+        }
+
+        if (value === currentNode.value) {
+            if (currentNode.leftNode !== null ) {
                 this.binaryConstructor(value, currentNode.leftNode)
-            }
-        } else  {
-            if (currentNode.rightNode === null) {
-                currentNode.rightNode = newNode
             } else {
+                let newNode = new BinaryNode(value)
+                currentNode.leftNode = newNode
+                return
+            }
+        } else {
+            if (currentNode.rightNode !== null) {
                 this.binaryConstructor(value, currentNode.rightNode)
+            } else {
+                let newNode = new BinaryNode(value)
+                currentNode.rightNode = newNode
+                return
             }
         }
+
     }
 
-    preorderPrinting () {
-        let Node = this.rootNode
+    jediWoodCutter (value) {
+        if (this.isEmpty()) {
+            return
+        }
 
+        if (this.rootNode.leftNode === null && this.rootNode.rightNode === null && this.rootNode.value === value) {
+            this.rootNode = null
+        }
+        // See the magic happen
+    }
+
+    // Metodos de percurso
+    preorderPrinting(Node = this.rootNode) {
         console.log(Node.value)
 
         if (Node.leftNode !== null) {
@@ -51,9 +68,7 @@ class BinaryTree {
         }
     }
 
-    orderPrinting() {
-        let Node = this.rootNode
-        
+    orderPrinting(Node = this.rootNode) {
         if (Node.leftNode !== null) {
             this.preorderPrinting(Node.leftNode)
         }

@@ -8,5 +8,9 @@ while ( condition === true ) {
     let value = readline.question(`Insira um numero na arvore: `)
     // console.log(`Inserindo valor ${value }`)
         tree.binaryConstructor(value)
-        // tree.orderPrinting()
+        
+        console.log('Ordem simetrica:')
+            tree.orderPrinting()
+        console.log('Pre-ordem:') 
+            tree.preorderPrinting()
 }
