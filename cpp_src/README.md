@@ -29,8 +29,8 @@ Instruções abrangentes são [fornecidas pelo Facebook](https://buckbuild.com/s
 A Implementação completa do C++11 nos compiladores está disponível nas seguintes versões ou posteriores:
 * GCC 4.8.1 ([veja mais][gcc_status])
 * Clang 3.3 ([veja mais][clang_status])
+* Visual C++ 2015 ([veja mais][visual_cpp_status])
 * Intel C++ Compiler 14.0 ([veja mais][intel_status])
-* Visual Studio 2015 ([veja mais][visual_studio_status])
 
 ## Configuração no Windows
 É assim que você configura o desenvolvimento do PowerShell com C++ para poder usar o Visual Studio Toolchain. Precisamos exportar variáveis ​​de ambiente do Visual Studio no PowerShell, pois isso não é feito por padrão.
@@ -81,4 +81,4 @@ buck run :game
 [gcc_status]: https://gcc.gnu.org/projects/cxx-status.html#cxx11
 [clang_status]: https://clang.llvm.org/cxx_status.html
 [intel_status]: https://software.intel.com/en-us/articles/c0x-features-supported-by-intel-c-compiler
-[visual_studio_status]: https://docs.microsoft.com/en-us/cpp/overview/visual-cpp-language-conformance?view=vs-2019
+[visual_cpp_status]: https://docs.microsoft.com/en-us/cpp/overview/visual-cpp-language-conformance?view=vs-2019
