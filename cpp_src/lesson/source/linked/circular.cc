@@ -1,8 +1,7 @@
-#include <lesson/linked/list/circular.h>
+#include <lesson/linked/circular.h>
 
 namespace lesson {
 namespace linked {
-namespace list {
 /*
  * Constructor
  */
@@ -70,6 +69,5 @@ template <typename T>
 bool circular<T>::has_one_element() {
   return this->ptr_initial == this->ptr_initial->next;
 }
-}  // namespace list
 }  // namespace linked
 }  // namespace lesson

@@ -1,18 +1,17 @@
-#ifndef LESSON_LINKED_SIMPLE_H_
-#define LESSON_LINKED_SIMPLE_H_
-#include <lesson/linked/node/simple.h>
+#ifndef LESSON_LINKED_LIST_H_
+#define LESSON_LINKED_LIST_H_
+#include <lesson/node/single.h>
 
 namespace lesson {
 namespace linked {
-namespace list {
 template <typename T>
-class simple {
+class list {
  private:
-  lesson::linked::node::simple<T>* ptr_front;
+  lesson::node::single<T>* ptr_front;
 
  public:
-  simple();
-  ~simple();
+  list();
+  ~list();
 
   // Element Access
   T front();
@@ -26,7 +25,6 @@ class simple {
   // Capacity
   bool empty();
 };
-}  // namespace list
 }  // namespace linked
 }  // namespace lesson
 

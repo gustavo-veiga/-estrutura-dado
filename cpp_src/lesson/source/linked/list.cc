@@ -1,4 +1,4 @@
-#include <lesson/linked/list/simple.h>
+#include <lesson/linked/list.h>
 #include <iostream>
 #include <stdexcept>
 
@@ -9,7 +9,7 @@ namespace linked {
  */
 
 template <typename T>
-list::simple<T>::simple() {
+list<T>::list() {
   this->ptr_front = nullptr;
 }
 
@@ -18,7 +18,7 @@ list::simple<T>::simple() {
  */
 
 template <typename T>
-list::simple<T>::~simple() {
+list<T>::~list() {
   auto aux = this->ptr_front;
   while (aux != nullptr) {
     auto to_remove = aux;
@@ -34,12 +34,12 @@ list::simple<T>::~simple() {
 // Element Access
 
 template <typename T>
-T list::simple<T>::front() {
+T list<T>::front() {
   return this->ptr_front->element;
 }
 
 template <typename T>
-void list::simple<T>::show() {
+void list<T>::show() {
   auto aux = this->ptr_front;
   while (aux != nullptr) {
     std::cout << aux->element << std::endl;
@@ -50,7 +50,7 @@ void list::simple<T>::show() {
 // Modifiers
 
 template <typename T>
-void list::simple<T>::pop(T element) {
+void list<T>::pop(T element) {
   if (this->ptr_front->element == element) {
     // Primero nó
     auto to_remove = this->ptr_front;
@@ -72,23 +72,23 @@ void list::simple<T>::pop(T element) {
 }
 
 template <typename T>
-void list::simple<T>::push_front(T element) {
+void list<T>::push_front(T element) {
   if (this->empty()) {
-    this->ptr_front = new node::simple<T>(element);
+    this->ptr_front = new node::single<T>(element);
   } else {
-    this->ptr_front = new node::simple<T>(element, this->ptr_front);
+    this->ptr_front = new node::single<T>(element, this->ptr_front);
   }
 }
 
 template <typename T>
-void list::simple<T>::push_back(T element) {
+void list<T>::push_back(T element) {
   if (this->empty()) {
-    this->ptr_front = new node::simple<T>(element);
+    this->ptr_front = new node::single<T>(element);
   } else {
     auto aux = this->ptr_front;
     while (aux != nullptr) {
       if (aux->next == nullptr) {
-        aux->next = new node::simple<T>(element);
+        aux->next = new node::single<T>(element);
         break;
       }
       aux = aux->next;
@@ -99,10 +99,10 @@ void list::simple<T>::push_back(T element) {
 // Capacity
 
 template <typename T>
-bool list::simple<T>::empty() {
+bool list<T>::empty() {
   return this->ptr_front == nullptr;
 }
 }  // namespace linked
 }  // namespace lesson
 
-template class lesson::linked::list::simple<int>;
+template class lesson::linked::list<int>;
