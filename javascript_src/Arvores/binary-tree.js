@@ -83,3 +83,14 @@ module.exports = {
     BinaryNode,
     BinaryTree
 }
+
+// function fat(n) {
+//     if (n <= 1) {
+//         return 1
+//     } else {
+//         console.log(`Pimba`)
+//         return n * fat(n - 1)
+//     }
+// }
+
+// console.log(`O fatorial de ${5} eh : ` + fat(5))
