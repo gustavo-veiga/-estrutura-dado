@@ -33,6 +33,16 @@ A Implementação completa do C++11 nos compiladores está disponível nas segui
 * Intel C++ Compiler 14.0 ([veja mais][intel_status])
 
 ## Configuração no Windows
+### Windows 10
+O suporte do Buck para o Windows 10 está atualmente na versão **Beta**.
+
+Para usar o Buck no Windows 10, você precisa garantir que sua instalação do Windows atenda aos seguintes requisitos.
+
+1. Estar executando o Windows 10 compilação 1703 ou superior.
+2. Ativar o modo de desenvolvedor no Windows. [Siga estas instruções][windows10_enable_development].
+3. Ativar nomes de caminhos longos. O seguinte [artigo do Stack Exchange][windows10_longpaths] consolida informações relevantes.
+
+### Trabalhando com o PowerShell
 É assim que você configura o desenvolvimento do PowerShell com C++ para poder usar o Visual Studio Toolchain. Precisamos exportar variáveis ​​de ambiente do Visual Studio no PowerShell, pois isso não é feito por padrão.
 
 1. Instale o [Visual Studio][visual_studio] e verifique se você instalou o VC++.
@@ -82,3 +92,5 @@ buck run :game
 [clang_status]: https://clang.llvm.org/cxx_status.html
 [intel_status]: https://software.intel.com/en-us/articles/c0x-features-supported-by-intel-c-compiler
 [visual_cpp_status]: https://docs.microsoft.com/en-us/cpp/overview/visual-cpp-language-conformance?view=vs-2019
+[windows10_enable_development]: https://docs.microsoft.com/en-us/windows/uwp/get-started/enable-your-device-for-development
+[windows10_longpaths]: https://superuser.com/questions/1119883/windows-10-enable-ntfs-long-paths-policy-option-missing
