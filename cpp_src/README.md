@@ -48,7 +48,7 @@ Para usar o Buck no Windows 10, você precisa garantir que sua instalação do W
 1. Instale o [Visual Studio][visual_studio] e verifique se você instalou o VC++.
 2. Abra o PowerShell como administrador e execute os seguintes comandos:
     ```
-    set-executionpolicy unrestricted
+    Set-ExecutionPolicy Unrestricted
     Install-Module -Name PSCX -AllowClobber
     Install-Module -Name VSSetup -AllowClobber
     Import-VisualStudioVars 2017 amd64
