@@ -66,12 +66,12 @@ Tem o mesmo funcionamento da lista de cima, se diferenciando, contudo, em que o 
 
 ## Árvores
 
-É uma estrutura formada por um conjunto T de nós. Entende-se por nó, um elemento que possui uma chave e x ponteiros para cada um dos nós subsequentes a ele. O primeiro nó da árvore é denominado raiz. Quando um nó não possui nenhum "filho", podemos afirmar que ele é uma folha.
+É uma estrutura formada por um conjunto T de nós. Entende-se por nó, um elemento que possui uma chave e ***n*** ponteiros para cada um dos nós subsequentes a ele. O primeiro nó da árvore é denominado raiz. Quando um nó não possui nenhum "filho", podemos afirmar que ele é uma folha.
 
 Uma árvore pode ser classificada em:
 
-* **binária**, quando seus nós possuem até 2 ligações;
-* **n-ária**, quando seus nós possuem 2 ou n ligações;
+* **binária**: quando seus nós possuem até 2 ligações;
+* **n-ária**: quando seus nós possuem 2 ou n ligações;
 
 As árvores possuem algumas propriedades:
 
@@ -88,30 +88,39 @@ exceto o penúltimo e último níveis.
 * **Binária Cheia**: Todos os níveis possuem dois nós, exceto o
 último (nós folhas).
 
-#### Cálculo da quantidade de nós em um nível n
+Toda árvore cheia é completa e estritamente binária, mas nem toda árvore completa é cheia
+e estritamente binária, e nem toda árvore estritamente binária é cheia e completa.
 
-* Para o nó raiz no nível 0: 2^n ou 2 elevado a n.
-* Para o nó raiz no nível 1: 2^(n - 1) ou 2 elevado a (n - 1)
+#### Fórmulas para Calcular o Número de Nós nas Árvores Binárias
+* Número de nós máximo em um nível ***n***:
+  * Para o nó raiz no nível 0: 2 ^ n.
+  * Para o nó raiz no nível 1: 2 ^ (n - 1).
+* Número de nós até um nível ***n***:
+  * Para o nó raiz no nível 0: 2 ^ (n + 1) - 1
+  * Para o nó raiz no nível 1: 2 ^ n - 1
+* Número mínimo de nós até um nível ***n***:
+  * Para o nó raiz no nível 0: n + 1
+  * Para o nó raiz no nível 1: n
 
 #### Percursos em árvore binária
 
-##### Em pré-ordem
+##### Em Pré-ordem
 
 1. Visito a raiz
 2. Percorro a subárvore esquerda em pré-ordem
 3. Percorro a subárvore direita em pré-ordem
 
-##### Em in-ordem ou ordem simétrica
-
-1. Percorro a subárvore esquerda em ordem simétrica
-2. Visito a raiz
-3. Percorro a subárvore direita em ordem simétrica
-
-##### Em pós-ordem
+##### Em Pós-ordem
 
 1. Percorro a subárvore esquerda em pós-ordem
 2. Percorro a subárvore direita em pós-ordem
 3. Visito a raiz
+
+##### Em Ordem Simétrica (Em Ordem):
+
+1. Percorro a subárvore esquerda em ordem simétrica
+2. Visito a raiz
+3. Percorro a subárvore direita em ordem simétrica
 
 ##### Em nível ou em profundidade
 
