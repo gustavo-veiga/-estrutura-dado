@@ -4,6 +4,8 @@ if(${CMAKE_VERSION} VERSION_LESS 3.12)
   cmake_policy(VERSION ${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION})
 endif()
 
+enable_testing()
+
 project(estrutura-dados)
 
 # Lesson Library

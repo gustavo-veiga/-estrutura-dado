@@ -15,3 +15,6 @@ add_library(${PROJECT_NAME} STATIC ${LESSON})
 target_include_directories(${PROJECT_NAME} PUBLIC include)
 target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_11)
 set_target_properties(${PROJECT_NAME} PROPERTIES LINKER_LANGUAGE CXX)
+
+# Tests
+add_subdirectory(test)
