@@ -1,9 +1,6 @@
 #include <lesson/tree/bsearch.h>
 #include <iostream>
 
-template <typename T>
-using node = lesson::node::binary<T>;
-
 namespace lesson {
 namespace tree {
 /*
@@ -51,13 +48,13 @@ void bsearch<T>::push_r(T element, lesson::node::binary<T> r) {
     if (r->left != nullptr) {
       this->push_r(element, r->left);
     } else {
-      r->left = node<T>(element);
+      r->left = lesson::node::binary<T>(element);
     }
   } else {
     if (r->right != nullptr) {
-      this->push_r(element, r->right)
+      this->push_r(element, r->right);
     } else {
-      r->right = node<T>(element);
+      r->right = lesson::node::binary<T>(element);
     }
   }
 }
@@ -67,7 +64,7 @@ void bsearch<T>::push_r(T element, lesson::node::binary<T> r) {
  */
 template <typename T>
 bsearch<T>::bsearch(T element) {
-  this->root = node<T>(element);
+  this->root = lesson::node::binary<T>(element);
 }
 
 /*
