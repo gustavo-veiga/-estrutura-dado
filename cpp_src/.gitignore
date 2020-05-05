@@ -2,7 +2,7 @@
 .idea/
 .buckd/
 buck-out/
-buid/
+build/
 .directory
 
 *.o
