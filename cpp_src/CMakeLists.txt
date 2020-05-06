@@ -14,6 +14,9 @@ add_subdirectory(lesson)
 # List Executable
 add_subdirectory(list)
 
+# List GUI Executable
+add_subdirectory(list-gui)
+
 # Game Executable
 add_subdirectory(game)
 
