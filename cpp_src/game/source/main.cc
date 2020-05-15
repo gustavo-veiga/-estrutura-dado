@@ -1,47 +1,17 @@
-#include <GLFW/glfw3.h>
+#include <allegro5/allegro5.h>
 
-#include <iostream>
+int main(int argc, char const *argv[])
+{
+  // Init Allegro
+  al_init();
 
-static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods) {
-  if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) glfwSetWindowShouldClose(window, GLFW_TRUE);
-}
+  // Create window
+  auto window = al_create_display(640, 800);
 
-int main() {
-  // Initialize the library
-  if (!glfwInit()) return -1;
+  al_clear_to_color(al_map_rgb(255, 255, 255));
+  al_flip_display();
+  al_rest(10.0);
+  al_destroy_display(window);
 
-  // Primary monitor
-  const auto monitor = glfwGetPrimaryMonitor();
-
-  // Windowed full screen
-  const auto mode = glfwGetVideoMode(monitor);
-  glfwWindowHint(GLFW_RED_BITS, mode->redBits);
-  glfwWindowHint(GLFW_GREEN_BITS, mode->greenBits);
-  glfwWindowHint(GLFW_BLUE_BITS, mode->blueBits);
-  glfwWindowHint(GLFW_REFRESH_RATE, mode->refreshRate);
-
-  // Create a windowed mode window and its OpenGL context
-  auto window = glfwCreateWindow(mode->width, mode->height, "Hello World", NULL, NULL);
-  if (!window) {
-    glfwTerminate();
-    return -1;
-  }
-
-  // Make the window's context current
-  glfwMakeContextCurrent(window);
-
-  // Loop until the user closes the window
-  while (!glfwWindowShouldClose(window)) {
-    // Swap front and back buffers
-    glfwSwapBuffers(window);
-
-    // Poll for and process events
-    glfwPollEvents();
-
-    glfwSetKeyCallback(window, key_callback);
-  }
-
-  glfwTerminate();
-
-  return EXIT_SUCCESS;
+  return 0;
 }
