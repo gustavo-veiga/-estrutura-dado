@@ -1,6 +1,6 @@
 const readline = require('readline-sync')
 
-function Pilha() {
+function Stack() {
     this.lista = new Array(10) // Valor 10 deve ser trocado por input
     this.topo = -1
 
@@ -51,7 +51,7 @@ function Pilha() {
     }
 }
 
-let p = new Pilha()
+let p = new Stack()
 let condition = true
 
 while (condition) {

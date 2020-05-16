@@ -1,7 +1,7 @@
 //Captiura a escrita do usuario
 const readlide = require('readline-sync')
 
-function Pilha() {
+function Stack() {
     this.lista = new Array(10) // Trocar por imput do usuario
     this.topo = -1
 
@@ -38,7 +38,7 @@ function Pilha() {
     }
 }
 
-function Fila() {
+function Queue() {
     this.list = new Array(10) //Trocar por input do usuario
     this.first = 0
     this.ultimo = 0
@@ -76,8 +76,8 @@ function Fila() {
 }
 
 //Instancia das estruturas
-let f = new Fila()
-let p = new Pilha()
+let f = new Queue()
+let p = new Stack()
 
 function generateRandomNumbers(size, min, max) {
 

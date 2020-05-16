@@ -1,6 +1,6 @@
 const readline = require('readline-sync')
 
-function Fila () {
+function Queue() {
     this.list = new Array(10) //Trocar para input do usuario 
     this.first = 0
     this.ultimo = 0
@@ -39,7 +39,7 @@ function Fila () {
     }
 }
 
-let f = new Fila()
+let f = new Queue()
 let condition = true
 
 while (condition) {
