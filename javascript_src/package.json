@@ -1,8 +1,16 @@
 {
-  "name": "app",
+  "name": "estrutura-dados",
   "version": "1.0.0",
-  "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "list": "node src/array-list/array-list.js",
+    "game": "node src/challenge-linked-list/index.js",
+    "stack": "node src/stack-queue/stack.js",
+    "queue": "node src/stack-queue/queue.js",
+    "task1": "node src/stack-queue/task1.js",
+    "task2": "node src/stack-queue/task2.js",
+    "task3": "node src/stack-queue/task3.js"
+  },
   "dependencies": {
     "readline": "^1.3.0",
     "readline-sync": "^1.4.9"

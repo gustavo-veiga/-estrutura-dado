@@ -1,4 +1,4 @@
-class Tarefa3 {
+class Task3 {
   constructor () {
     this.fila = []
     this.quantidadeMaxima = 50
@@ -138,7 +138,7 @@ class Tarefa3 {
   }
 }
 
-minhaFilaPo = new Tarefa3()
+minhaFilaPo = new Task3()
 
 const ademar = {
   name: 'Ademar',
