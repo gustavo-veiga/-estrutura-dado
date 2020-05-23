@@ -8,8 +8,8 @@ function Linked() {
      *
     */
 
-    let ptInicio = null
-    let lenght = 0
+    var ptInicio = null;
+    var lenght = 0;
 
     // Factory of node
     const Node = (value) => {
