@@ -5,18 +5,18 @@
 
 SCENARIO("vectors can be sized and resized", "[vector]") {
   GIVEN("A vector with some items") {
-    auto v = lesson::array::vector<int>(5);
+    lesson::array::vector<int> v{1, 2, 3};
 
-    REQUIRE(v.size() == 0);
-    REQUIRE(v.capacity() >= 5);
+    REQUIRE(v.size() == 3);
+    REQUIRE(v.capacity() >= 10);
 
     WHEN("the add is increased") {
       for (size_t i = 0; i < 10; i++) {
         v.push(i);
       }
       THEN("the size and capacity change") {
-        REQUIRE(v.size() == 10);
-        REQUIRE(v.capacity() >= 10);
+        REQUIRE(v.size() == 13);
+        REQUIRE(v.capacity() >= 20);
       }
     }
   }

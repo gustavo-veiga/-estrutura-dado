@@ -7,7 +7,6 @@ endif()
 # Project "list"
 project(list LANGUAGES CXX)
 
-# External Libraries
 find_package(fmt 6.2 REQUIRED)
 
 # List Executable
