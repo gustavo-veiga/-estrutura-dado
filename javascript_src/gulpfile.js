@@ -6,6 +6,7 @@ const concat = require('gulp-concat');
 gulp.task('default', () =>
   gulp.src([
     'src/lesson/queue.js',
+    'src/lesson/queue-priority.js',
     'src/lesson/stack.js',
     'src/lesson/stack-operations.js',
     'src/lesson/random-numbers.js',
