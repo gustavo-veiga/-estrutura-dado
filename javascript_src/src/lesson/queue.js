@@ -1,9 +1,9 @@
 class Queue {
   constructor(size) {
     this.elements = Array(size);
+    this.total = 0;
     this.first = 0;
     this.last = 0;
-    this.total = 0;
   }
 
   // Element access
