@@ -7,7 +7,6 @@ endif()
 # Project "lesson-test"
 project(lesson-test LANGUAGES CXX)
 
-# External Libraries
 find_package(Catch2 REQUIRED)
 
 # Vector
