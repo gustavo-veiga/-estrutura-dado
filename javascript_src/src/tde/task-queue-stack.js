@@ -10,11 +10,13 @@ const taskQueueStack = () => {
   print('Insira o final inicial para os números randômicos:');
   const max = Number(readline());
 
-  new RandomNumbers().generate().forEach(value => {
+  const random = new RandomNumbers(size, min, max);
+
+  random.generate().forEach(value => {
     queue.push(value);
   });
 
-  new RandomNumbers().generate().forEach(value => {
+  random.generate().forEach(value => {
     stack.push(value);
   });
 
