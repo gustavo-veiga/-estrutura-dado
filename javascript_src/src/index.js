@@ -1,7 +1,7 @@
 const param = scriptArgs[0]
 
 if (param === 'task1') {
-  task1();
+  taskStack();
 } else if (param === 'task2') {
   print('Executando programa 2...')
 } else if (param == null || param === '-h' || param === '--help') {

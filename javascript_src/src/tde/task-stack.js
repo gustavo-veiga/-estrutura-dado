@@ -1,4 +1,4 @@
-const task1 = () => {
+const taskStack = () => {
   print('Insira o tamanho da pilha:');
   const size = Number(readline());
 
