@@ -17,9 +17,8 @@ const taskQueuePriority = () => {
     numAtendimentos++;
   }
 
-  print('Bem-vindo(a) ao Sistema do Laboratório de Análises Clínicas');
-  print('                       MAIS SAÚDE                          ');
-  print('-----------------------------------------------------------\n');
+  asciiArtMaisSaude();
+  print('');
   let next;
   let choice = 0;
   let priority = '';

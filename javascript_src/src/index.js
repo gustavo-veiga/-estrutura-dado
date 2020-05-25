@@ -13,14 +13,14 @@ if (param === 'queue') {
 } else if (param === 'task2') {
   print('Executando programa 2...')
 } else if (param == null || param === '-h' || param === '--help') {
-  print(`Estrutura de Dados CLI
-Os seguintes parâmetros estão disponíveis:
-\tqueue \t\t\tFila
-\tqueue-stack \t\tFila e Pilha
-\tqueue-priority \t\tFila Prioritária
-\tstack \t\t\tPilha
-\tstack-operations \tPilha com Operações Matemáticas
-\t-h --help \t\tEsse guia de ajuda`)
+  asciiArtEstruturaDeDados();
+  print('\nOs seguintes parâmetros estão disponíveis:');
+  print('   queue             Fila');
+  print('   tqueue-stack      Fila e Pilha');
+  print('   queue-priority    Fila Prioritária');
+  print('   stack             Pilha');
+  print('   stack-operations  Pilha com Operações Matemáticas');
+  print('   -h --help         Esse guia de ajuda');
 } else {
   print('Comando não encontrado!')
 }
