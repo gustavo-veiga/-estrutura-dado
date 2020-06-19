@@ -5,8 +5,10 @@ const concat = require('gulp-concat');
 
 gulp.task('default', () =>
   gulp.src([
+    'src/cli/ansi/color.js',
     'src/cli/ascii-art/estrutura-de-dados.js',
     'src/cli/ascii-art/mais-saude.js',
+    'src/cli/ascii-art/opstack.js',
     'src/lesson/queue.js',
     'src/lesson/queue-priority.js',
     'src/lesson/stack.js',
@@ -15,9 +17,9 @@ gulp.task('default', () =>
     'src/lesson/vector.js',
     'src/tde/task-queue.js',
     'src/tde/task-queue-stack.js',
-    'src/tde/task-queue-priority.js',
+    'src/tde/task-mais-saude.js',
     'src/tde/task-stack.js',
-    'src/tde/task-stack-operations.js',
+    'src/tde/task-opstack.js',
     'src/index.js'
   ])
   .pipe(concat('all.js'))

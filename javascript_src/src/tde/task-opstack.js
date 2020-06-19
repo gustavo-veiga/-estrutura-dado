@@ -1,4 +1,5 @@
-const taskStackOperations = () => {
+const taskOpStack = () => {
+  asciiArtOpStack();
   print('Insira o tamanho da pilha:');
   const size = Number(readline());
 

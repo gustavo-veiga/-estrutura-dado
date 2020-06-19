@@ -1,4 +1,4 @@
-const taskQueuePriority = () => {
+const taskMaisSaude = () => {
   let numAtendimentos = 0;
   const queuePriority = new QueuePriority(50);
 

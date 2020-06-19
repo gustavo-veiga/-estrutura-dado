@@ -4,8 +4,8 @@ if (param === 'queue') {
   taskQueue();
 } else if (param === 'queue-stack') {
   taskQueueStack();
-} else if (param === 'queue-priority') {
-  taskQueuePriority();
+} else if (param === 'mais-saude') {
+  taskMaisSaude();
 } else if (param === 'stack') {
   taskStack();
 } else if (param === 'stack-operations') {
@@ -13,14 +13,16 @@ if (param === 'queue') {
 } else if (param === 'task2') {
   print('Executando programa 2...')
 } else if (param == null || param === '-h' || param === '--help') {
+  color.red();
   asciiArtEstruturaDeDados();
+  color.reset();
   print('\nOs seguintes parâmetros estão disponíveis:');
-  print('   queue             Fila');
-  print('   tqueue-stack      Fila e Pilha');
-  print('   queue-priority    Fila Prioritária');
-  print('   stack             Pilha');
-  print('   stack-operations  Pilha com Operações Matemáticas');
-  print('   -h --help         Esse guia de ajuda');
+  print('   queue       Fila');
+  print('   queue-stack Fila e Pilha');
+  print('   mais-saude  Atendimento a paciente em fila prioritária');
+  print('   stack       Pilha');
+  print('   opstack     Pilha com Operações Matemáticas');
+  print('   -h --help   Esse guia de ajuda');
 } else {
   print('Comando não encontrado!')
 }
